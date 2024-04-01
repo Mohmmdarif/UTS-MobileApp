@@ -4,4 +4,14 @@
     <string name="activity_menu_label">Kegiatan</string>
     <string name="field_menu_label">Ladang</string>
     <string name="article_menu_label">Artikel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">"Hello, "</string>
+    <string name="username">Fakhri</string>
+    <string name="location">Bandung, Indonesia</string>
+    <string name="date">Minggu, 13 Maret 2023</string>
+    <string name="temperature">25\'C</string>
+    <string name="label_kelembapan">Kelembapan</string>
+    <string name="label_angin">Angin</string>
+    <string name="label_tekanan">Tekanan</string>
 </resources>
