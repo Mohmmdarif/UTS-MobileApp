@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TANIALTECH</string>
+    <string name="dashboard_menu_label">Dashboard</string>
+    <string name="activity_menu_label">Kegiatan</string>
+    <string name="field_menu_label">Ladang</string>
+    <string name="article_menu_label">Artikel</string>
 </resources>
