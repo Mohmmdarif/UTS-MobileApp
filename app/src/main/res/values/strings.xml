@@ -14,4 +14,13 @@
     <string name="label_kelembapan">Kelembapan</string>
     <string name="label_angin">Angin</string>
     <string name="label_tekanan">Tekanan</string>
+    <string name="profile_description">profile</string>
+    <string name="cloud_status">cloud</string>
+    <string name="informasi_kelembapan">80%</string>
+    <string name="informasi_angin">20m/s</string>
+    <string name="informasi_tekanan">110 Kpa</string>
+    <string name="header_daily_activity">Kegiatan Harian</string>
+    <string name="see_more_navigation">Lihat Semua</string>
+    <string name="checkbox_label">Siram tanaman di ladang Selada S-01</string>
+    <string name="time">08.00 - 10.30</string>
 </resources>

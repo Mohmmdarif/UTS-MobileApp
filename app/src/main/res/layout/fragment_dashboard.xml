@@ -33,6 +33,7 @@
             android:text="@string/username"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/hello"
             android:layout_marginTop="22dp"
@@ -48,244 +49,299 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
+            android:contentDescription="@string/profile_description"
             />
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:background="@drawable/container"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_icon"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginHorizontal="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/location_icon"-->
-<!--            android:layout_width="20dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:src="@drawable/location"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_icon"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginStart="35dp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/location"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/location"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/location_icon"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_icon"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginStart="2dp"-->
-<!--            android:textSize="12sp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/date"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/date"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/location"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_marginStart="42dp"-->
-<!--            android:textSize="11sp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/temperature"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/temperature"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/date"-->
-<!--            android:layout_marginTop="0dp"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:textSize="24sp"-->
-<!--            android:textStyle="bold"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/cloudy"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_icon"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginEnd="35dp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            />-->
-
-<!--        <View-->
-<!--            android:id="@+id/divider"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0.5dp"-->
-<!--            android:background="@color/black"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/temperature"-->
-<!--            android:layout_marginHorizontal="40dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/kelembapan"-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:src="@drawable/kelembapan"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/divider"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/angin"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/angin"-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:src="@drawable/angin"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/divider"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/kelembapan"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/tekanan"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/tekanan"-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:src="@drawable/tekanan"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/divider"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/angin"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/label_kelembapan"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/label_kelembapan"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/kelembapan"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/label_angin"-->
-<!--            android:layout_marginEnd="15dp"-->
-<!--            android:textSize="11sp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/label_angin"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/label_angin"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/angin"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/label_kelembapan"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/label_tekanan"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:textSize="11sp"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/label_tekanan"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/label_tekanan"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tekanan"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/label_angin"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginEnd="5dp"-->
-<!--            android:textSize="11sp"-->
-<!--            />-->
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/profile_icon"
-            android:layout_marginTop="20dp"
-            >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
+                app:layout_constraintTop_toBottomOf="@+id/profile_icon"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
                 >
 
-                <ImageView
-                    android:id="@+id/location_icon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/location"
-                     />
-
-                <TextView
-                    android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/location"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="45dp"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/maison_neue_book"
-                    />
-
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/date"
-                    android:layout_marginTop="43dp"
-                    android:layout_marginStart="26dp"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/maison_neue_book"
-                    />
-
-                <TextView
-                    android:id="@+id/temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/temperature"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginStart="26dp"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/maison_neue_book"
-                    />
-
-                <View
-                    android:id="@+id/divider"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/black"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginTop="100dp"
-                    />
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/kelembapan"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/kelembapan"
-                    android:layout_marginTop="150dp"
-                    />
+                    <ImageView
+                        android:id="@+id/location_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/location"
+                        android:contentDescription="@string/location"
+                        />
 
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/location"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="45dp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/maison_neue_medium"
+                        android:textColor="@color/black"
+                        />
 
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="43dp"
+                        android:layout_marginStart="26dp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
 
+                    <TextView
+                        android:id="@+id/temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temperature"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginStart="26dp"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="26dp"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/cloud_status"
+                        android:src="@drawable/cloudy" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/gray"
+                        app:layout_constraintTop_toBottomOf="@+id/temperature"
+                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginVertical="10dp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="50dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/kelembapan"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/kelembapan"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/angin"
+                        android:contentDescription="@string/label_kelembapan"
+                        />
+
+                    <ImageView
+                        android:id="@+id/angin"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/angin"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/kelembapan"
+                        app:layout_constraintEnd_toStartOf="@+id/tekanan"
+                        android:contentDescription="@string/label_angin"
+                        />
+
+                    <ImageView
+                        android:id="@+id/tekanan"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/tekanan"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/angin"
+                        android:contentDescription="@string/label_tekanan"
+                        />
+
+                    <TextView
+                        android:id="@+id/label_kelembapan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_kelembapan"
+                        app:layout_constraintTop_toBottomOf="@+id/kelembapan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/label_angin"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="18dp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+
+                    <TextView
+                        android:id="@+id/label_angin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_angin"
+                        app:layout_constraintTop_toBottomOf="@+id/angin"
+                        app:layout_constraintStart_toEndOf="@+id/label_kelembapan"
+                        app:layout_constraintEnd_toStartOf="@+id/label_tekanan"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="25dp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+
+                    <TextView
+                        android:id="@+id/label_tekanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_tekanan"
+                        app:layout_constraintTop_toBottomOf="@+id/tekanan"
+                        app:layout_constraintStart_toEndOf="@+id/label_angin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+
+                    <TextView
+                        android:id="@+id/status_kelembapan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_kelembapan"
+                        app:layout_constraintTop_toBottomOf="@+id/label_kelembapan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/status_angin"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/status_angin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_angin"
+                        app:layout_constraintTop_toBottomOf="@+id/label_angin"
+                        app:layout_constraintStart_toEndOf="@+id/status_kelembapan"
+                        app:layout_constraintEnd_toStartOf="@+id/status_tekanan"
+                        android:layout_marginStart="20dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/status_tekanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_tekanan"
+                        app:layout_constraintTop_toBottomOf="@+id/label_tekanan"
+                        app:layout_constraintStart_toEndOf="@+id/status_angin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/card"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            >
 
+            <TextView
+                android:id="@+id/daily_activity_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/header_daily_activity"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/maison_neue_bold"
+                />
 
-        
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/see_more_navigation"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/daily_activity_header"
+                android:textSize="12sp"
+                android:fontFamily="@font/maison_neue_medium"
+                android:textColor="@color/green"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:layout_constraintTop_toBottomOf="@id/daily_activity_header"
+                android:layout_marginTop="12dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_lightgreen"
+                    android:padding="10dp"
+                    >
+
+                    <CheckBox
+                        android:id="@+id/checklistBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/checkbox_label"
+                        android:paddingStart="5dp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_medium"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time"
+                        app:layout_constraintTop_toTopOf="@+id/checklistBox"
+                        app:layout_constraintStart_toStartOf="@+id/checklistBox"
+                        app:layout_constraintBottom_toBottomOf="@+id/checklistBox"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="40dp"
+                        android:textSize="14sp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
