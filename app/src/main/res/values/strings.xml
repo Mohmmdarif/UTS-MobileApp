@@ -10,7 +10,7 @@
     <string name="username">Fakhri</string>
     <string name="location">Bandung, Indonesia</string>
     <string name="date">Minggu, 13 Maret 2023</string>
-    <string name="temperature">25\'C</string>
+    <string name="temperature">25°C</string>
     <string name="label_kelembapan">Kelembapan</string>
     <string name="label_angin">Angin</string>
     <string name="label_tekanan">Tekanan</string>

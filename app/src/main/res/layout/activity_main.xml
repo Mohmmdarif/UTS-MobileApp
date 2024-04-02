@@ -27,6 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
         app:labelVisibilityMode="labeled"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
