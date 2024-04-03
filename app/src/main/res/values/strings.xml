@@ -23,4 +23,7 @@
     <string name="see_more_navigation">Lihat Semua</string>
     <string name="checkbox_label">Siram tanaman di ladang Selada S-01</string>
     <string name="time">08.00 - 10.30</string>
+    <string name="header_field_activity">Ladang Saya</string>
+    <string name="card_title">Ladang Kentang</string>
+    <string name="code_id">K-01</string>
 </resources>
