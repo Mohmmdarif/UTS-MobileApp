@@ -27,6 +27,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
         app:labelVisibilityMode="labeled"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
