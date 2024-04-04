@@ -95,15 +95,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/namefield"
+                <EditText
+                    android:id="@+id/editname"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:textColor="#AAAAAA"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"
-                    android:text="Fakhri Muhamad Ichsan"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/uname"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -116,17 +113,15 @@
                     android:text="Email"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/namefield" />
+                    app:layout_constraintTop_toBottomOf="@+id/editname" />
 
-                <TextView
-                    android:id="@+id/mailfield"
+                <EditText
+                    android:id="@+id/editmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"
-                    android:text="fachriichsan17@gmail.com"
-                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mail"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -139,17 +134,15 @@
                     android:text="Password"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mailfield" />
+                    app:layout_constraintTop_toBottomOf="@+id/editmail" />
 
-                <TextView
-                    android:id="@+id/passfield"
+                <EditText
+                    android:id="@+id/editpassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"
-                    android:text="fachriichsan17@gmail.com"
-                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
                     android:inputType="textPassword"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/password"
