@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.activity_icon) {
                     selectedFragment = new ActivityFragment();
                 } else if (item.getItemId() == R.id.field_icon) {
-                    selectedFragment = new FieldFragment();
+                    selectedFragment = new EditProfileFragment();
                 } else if (item.getItemId() == R.id.article_icon) {
-                    selectedFragment = new ArticleFragment();
+                    selectedFragment = new ProfileFragment();
                 } else {
                     return false;
                 }
