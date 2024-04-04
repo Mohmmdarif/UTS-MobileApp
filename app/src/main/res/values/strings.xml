@@ -26,4 +26,10 @@
     <string name="header_field_activity">Ladang Saya</string>
     <string name="card_title">Ladang Kentang</string>
     <string name="code_id">K-01</string>
+    <string name="card_label">card label</string>
+    <string name="header_article_activity">Artikel Pertanian</string>
+    <string name="article">article</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="consectetur_adipiscing_elit_sed_do_eiusmod_tempor">consectetur adipiscing elit, sed do\neiusmod tempor</string>
+    <string name="article_date">12 April 2024</string>
 </resources>
