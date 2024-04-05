@@ -403,6 +403,7 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="8dp"
                         android:layout_marginHorizontal="5dp"
+                        app:cardElevation="0dp"
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -411,14 +412,16 @@
                             android:paddingBottom="2dp"
                             >
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/card_image1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:contentDescription="@string/card_title"
                                 android:src="@drawable/pic_1"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearanceOverlay="@style/RoundedImageview"
+                                />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -463,6 +466,7 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="8dp"
                         android:layout_margin="5dp"
+                        app:cardElevation="0dp"
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -471,14 +475,16 @@
                             android:paddingBottom="2dp"
                             >
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/card_image2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:contentDescription="@string/card_title"
                                 android:src="@drawable/pic_1"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearanceOverlay="@style/RoundedImageview"
+                                />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -524,6 +530,7 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="8dp"
                         android:layout_marginHorizontal="5dp"
+                        app:cardElevation="0dp"
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -532,14 +539,16 @@
                             android:paddingBottom="2dp"
                             >
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/card_image3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:contentDescription="@string/card_title"
                                 android:src="@drawable/pic_1"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearanceOverlay="@style/RoundedImageview"
+                                />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -584,6 +593,7 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="8dp"
                         android:layout_marginHorizontal="5dp"
+                        app:cardElevation="0dp"
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -592,7 +602,7 @@
                             android:paddingBottom="2dp"
                             >
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/card_image4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -677,128 +687,133 @@
                 android:textColor="@color/green"
                 />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:id="@+id/article_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/article_activity_header"
-                android:layout_marginTop="20dp"
-
-
+                app:cardElevation="0dp"
                 >
 
-                <ImageView
-                    android:id="@+id/article_image"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/frame_article_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:contentDescription="@string/article"
-                    />
+                    android:layout_marginTop="20dp"
+                    >
 
-                <TextView
-                    android:id="@+id/article_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lorem_ipsum_dolor_sit_amet"
-                    app:layout_constraintStart_toEndOf="@+id/article_image"
-                    app:layout_constraintTop_toTopOf="@+id/article_image"
-                    android:fontFamily="@font/maison_neue_bold"
-                    android:textSize="14sp"
-                    android:layout_marginHorizontal="10dp"
-                    />
+                    <ImageView
+                        android:id="@+id/article_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frame_article_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/article"
+                        />
 
-                <TextView
-                    android:id="@+id/article_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
-                    app:layout_constraintTop_toBottomOf="@+id/article_title"
-                    app:layout_constraintStart_toStartOf="@id/article_title"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:textSize="12sp"
-                    />
+                    <TextView
+                        android:id="@+id/article_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lorem_ipsum_dolor_sit_amet"
+                        app:layout_constraintStart_toEndOf="@+id/article_image"
+                        app:layout_constraintTop_toTopOf="@+id/article_image"
+                        android:fontFamily="@font/maison_neue_bold"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        />
 
-                <TextView
-                    android:id="@+id/article_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/article_date"
-                    app:layout_constraintStart_toStartOf="@id/article_title"
-                    app:layout_constraintTop_toBottomOf="@+id/article_desc"
-                    app:layout_constraintBottom_toBottomOf="@+id/article_image"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:textSize="12sp"
-                    />
+                    <TextView
+                        android:id="@+id/article_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
+                        app:layout_constraintTop_toBottomOf="@+id/article_title"
+                        app:layout_constraintStart_toStartOf="@id/article_title"
+                        android:fontFamily="@font/maison_neue_book"
+                        android:textSize="12sp"
+                        />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/article_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/article_date"
+                        app:layout_constraintStart_toStartOf="@id/article_title"
+                        app:layout_constraintTop_toBottomOf="@+id/article_desc"
+                        app:layout_constraintBottom_toBottomOf="@+id/article_image"
+                        android:fontFamily="@font/maison_neue_book"
+                        android:textSize="12sp"
+                        />
 
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/devider_article_color"
-                app:layout_constraintTop_toBottomOf="@+id/article_1"
-                android:layout_marginVertical="10dp"
-                />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- card 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/article_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/article_1"
-                android:layout_marginTop="20dp"
+                app:cardElevation="0dp"
                 >
 
-                <ImageView
-                    android:id="@+id/article_image2"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/frame_article_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:contentDescription="@string/article"
-                    />
+                    android:layout_marginTop="20dp"
+                    >
 
-                <TextView
-                    android:id="@+id/article_title2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lorem_ipsum_dolor_sit_amet"
-                    app:layout_constraintStart_toEndOf="@+id/article_image2"
-                    app:layout_constraintTop_toTopOf="@+id/article_image2"
-                    android:fontFamily="@font/maison_neue_bold"
-                    android:textSize="14sp"
-                    android:layout_marginHorizontal="10dp"
-                    />
+                    <ImageView
+                        android:id="@+id/article_image2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frame_article_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/article"
+                        />
 
-                <TextView
-                    android:id="@+id/article_desc2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
-                    app:layout_constraintTop_toBottomOf="@+id/article_title2"
-                    app:layout_constraintStart_toStartOf="@id/article_title2"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:textSize="12sp"
-                    />
+                    <TextView
+                        android:id="@+id/article_title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lorem_ipsum_dolor_sit_amet"
+                        app:layout_constraintStart_toEndOf="@+id/article_image2"
+                        app:layout_constraintTop_toTopOf="@+id/article_image2"
+                        android:fontFamily="@font/maison_neue_bold"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        />
 
-                <TextView
-                    android:id="@+id/article_date2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/article_date"
-                    app:layout_constraintStart_toStartOf="@id/article_title2"
-                    app:layout_constraintTop_toBottomOf="@+id/article_desc2"
-                    app:layout_constraintBottom_toBottomOf="@+id/article_image2"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:textSize="12sp"
-                    />
+                    <TextView
+                        android:id="@+id/article_desc2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
+                        app:layout_constraintTop_toBottomOf="@+id/article_title2"
+                        app:layout_constraintStart_toStartOf="@id/article_title2"
+                        android:fontFamily="@font/maison_neue_book"
+                        android:textSize="12sp"
+                        />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/article_date2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/article_date"
+                        app:layout_constraintStart_toStartOf="@id/article_title2"
+                        app:layout_constraintTop_toBottomOf="@+id/article_desc2"
+                        app:layout_constraintBottom_toBottomOf="@+id/article_image2"
+                        android:fontFamily="@font/maison_neue_book"
+                        android:textSize="12sp"
+                        />
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
