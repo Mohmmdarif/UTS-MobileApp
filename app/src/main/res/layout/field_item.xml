@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:strokeColor="@android:color/transparent"
+    app:strokeWidth="0dp"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="0dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/searchview_background"
+        >
+        <RelativeLayout
+            android:id="@+id/bungkus_ladang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:src="@drawable/pic_1"
+                android:id="@+id/image_ladang"
+                android:scaleType="centerCrop"
+                android:background="@drawable/image_radius"/>
+
+            <TextView
+                android:id="@+id/nama_ladang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/maison_neue_bold"
+                android:text="Nama Ladang"
+                android:layout_marginLeft="7dp"
+                android:layout_below="@id/image_ladang"
+                />
+
+            <TextView
+                android:id="@+id/kode_ladang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="S-01"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:textColor="#939393"
+                android:fontFamily="@font/maison_neue_medium"
+                android:layout_below="@id/nama_ladang"/>
+
+            <TextView
+                android:id="@+id/pembatas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="|"
+                android:layout_marginTop="5dp"
+                android:textColor="#939393"
+                android:fontFamily="@font/maison_neue_medium"
+                android:layout_below="@id/nama_ladang"
+                android:layout_toEndOf="@id/kode_ladang"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/luas_ladang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Luas Ladang"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/maison_neue_medium"
+                android:textColor="#939393"
+                android:layout_below="@id/nama_ladang"
+                android:layout_toEndOf="@id/pembatas"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/perkiraan_masa_tanam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="20"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:fontFamily="@font/maison_neue_bold"
+                android:layout_below="@id/kode_ladang"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Hari hingga panen"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/maison_neue_medium"
+                android:layout_below="@id/kode_ladang"
+                android:layout_toEndOf="@id/perkiraan_masa_tanam"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="10dp"
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</com.google.android.material.card.MaterialCardView>

@@ -26,4 +26,6 @@
     <string name="header_field_activity">Ladang Saya</string>
     <string name="card_title">Ladang Kentang</string>
     <string name="code_id">K-01</string>
+    <string name="ladang">ladang</string>
+    <string name="title_search_ladang">Cari ladang mu disini</string>
 </resources>
