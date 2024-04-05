@@ -3,6 +3,8 @@
     <color name="black">#3F3F3F</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4FAD55</color>
-    <color name="gray">#E3E3E3</color>
+    <color name="gray_secondary">#E3E3E3</color>
     <color name="devider_article_color">#F2F2F2</color>
+    <color name="gray">#3F3F3F</color>
+    <color name="lightgreen">#EEF7EE</color>
 </resources>
