@@ -152,7 +152,7 @@
             android:layout_height="50dp"
             android:layout_below="@id/tvFotoLadang"
             android:layout_marginTop="8dp"
-            android:src="@drawable/plus"
+            android:src="@drawable/plus1"
             android:background="@drawable/tombol_tambah_ladang"/>
     
     </RelativeLayout>
