@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="316dp"
+    android:layout_height="349dp"
+    android:background="@drawable/rounded_layout"
+    tools:context=".FormTambahKegiatanDialog">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Tambah Kegiatan"
+        android:fontFamily="@font/maison_neue_bold"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:id="@+id/container_kegiatan"
+        android:layout_width="280dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="22dp"
+        android:layout_below="@id/judul">
+
+        <TextView
+            android:id="@+id/tvNamaKegiatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Kegiatan"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:id="@+id/inputNamaKegiatan"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <TextView
+            android:id="@+id/tvWaktuKegiatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Waktu Kegiatan"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvWaktuKegiatan"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/inputWaktuAwal"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/maison_neue_medium"
+                android:textSize="12sp"
+                android:inputType="time"
+                android:textAlignment="center"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="#FFFFFF"
+                android:text="__"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/inputWaktuAkhir"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/maison_neue_medium"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:inputType="time"
+
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvSetiapHari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setiap Hari"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"/>
+
+        <Switch
+            android:id="@+id/switchButton"
+            android:layout_width="48dp"
+            android:layout_height="21dp"
+            tools:ignore="TouchTargetSizeCheck"
+            android:thumbTextPadding="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tvHari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hari"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="1dp"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHari"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonSenin"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonSelasa"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonRabu"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="R"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonKamis"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="K"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonJumat"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="J"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonSabtu"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/buttonMinggu"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_border"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="M"
+                android:textColor="@color/text_color_cirle"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/container_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container_kegiatan"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/batal"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:hint="Batal"
+            android:textColorHint="@color/text_color_selector"
+            android:textSize="12sp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="5dp"
+            android:paddingVertical="1dp"
+            android:layout_alignParentStart="true"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/simpan"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:hint="Simpan"
+            android:layout_weight="1"
+            android:textColorHint="@color/text_color_selector"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/batal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="5dp"
+            android:paddingVertical="1dp"
+            android:layout_alignParentEnd="true"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+</RelativeLayout>
