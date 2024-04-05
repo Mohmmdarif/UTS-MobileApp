@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="140dp"
         android:fontFamily="@font/maison_neue_bold"
         android:text="Selamat Datang"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/welcome"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="7dp"
         android:text="Masa depan pertanian di dalam genggaman,"
         android:textSize="14sp" />
@@ -36,30 +36,33 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/masaDepan"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="-1dp"
         android:text="Gabung sekarang!"
         android:textSize="14sp" />
+
 
     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
         android:id="@+id/carousel"
         android:layout_width="316dp"
         android:layout_height="280dp"
         android:layout_below="@id/masaDepan2"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/container"
         />
-    
+
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tombolDaftar"
         android:layout_width="154dp"
         android:layout_height="39dp"
         android:layout_below="@id/carousel"
-        android:id="@+id/tombolDaftar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_selector"
         android:hint="Daftar"
         android:textColorHint="@color/green"
-        android:background="@drawable/button_selector"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        />
+        tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>
