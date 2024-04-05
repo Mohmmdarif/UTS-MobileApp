@@ -322,7 +322,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambah Ladang"
+                    android:text="Tambah Kegiatan"
                     android:layout_toEndOf="@id/plus"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/maison_neue_medium"

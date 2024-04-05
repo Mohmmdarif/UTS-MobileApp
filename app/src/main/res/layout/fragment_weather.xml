@@ -19,7 +19,7 @@
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/back"
+            android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -453,7 +453,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:contentDescription="@string/label_kelembapan"
-                    android:src="@drawable/kelembapan"
+                    android:src="@drawable/kelembapan_logo"
                     app:layout_constraintEnd_toStartOf="@+id/angin"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

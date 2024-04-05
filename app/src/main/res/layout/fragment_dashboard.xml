@@ -153,7 +153,7 @@
                         android:id="@+id/kelembapan"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/kelembapan"
+                        android:src="@drawable/kelembapan_logo"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/angin"
