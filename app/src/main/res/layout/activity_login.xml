@@ -59,29 +59,29 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/belumPunyaAkun"
+                    android:id="@+id/sudahPunyaAkun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:text="Belum punya akun?"
+                    android:text="Sudah punya akun?"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/masukAkun" />
 
                 <TextView
-                    android:id="@+id/daftar"
+                    android:id="@+id/masuk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="112dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:text="Daftar"
+                    android:text="Masuk"
                     android:textColor="@color/green"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@id/belumPunyaAkun"
+                    app:layout_constraintStart_toStartOf="@id/sudahPunyaAkun"
                     app:layout_constraintTop_toBottomOf="@+id/masukAkun" />
 
                 <TextView
@@ -95,7 +95,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/daftar" />
+                    app:layout_constraintTop_toBottomOf="@id/masuk" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/unameInputLayout"
@@ -116,6 +116,37 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/maison_neue_medium"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/unameInputLayout" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="30dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailEditText"
+                        android:textSize="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/password"
@@ -128,7 +159,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unameInputLayout" />
+                    app:layout_constraintTop_toBottomOf="@id/emailInputLayout" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordInputLayout"
@@ -150,17 +181,27 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
+
                 <TextView
                     android:id="@+id/checkBoxDeskription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/maison_neue_medium"
-                    android:layout_marginStart="30dp"
-                    android:text="lupa kata sandi?"
+                    android:maxWidth="300dp"
+                    android:text="Lorem ipsum dolor sit amet, consectur adipiscing elit sed do eiusmod tempor incididunt."
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox"
                     app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
                 <TextView
@@ -170,7 +211,7 @@
                     android:layout_marginBottom="50dp"
                     android:background="@color/green"
                     android:gravity="center"
-                    android:text="Masuk"
+                    android:text="Daftar Akun"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
