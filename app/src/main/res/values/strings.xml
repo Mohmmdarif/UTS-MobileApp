@@ -26,6 +26,20 @@
     <string name="header_field_activity">Ladang Saya</string>
     <string name="card_title">Ladang Kentang</string>
     <string name="code_id">K-01</string>
-    <string name="ladang">ladang</string>
-    <string name="title_search_ladang">Cari ladang mu disini</string>
+    <string name="Ladang">ladang</string>
+    <string name="title_Search_ladang">Cari ladang mu disini</string>
+    <string name="card_label">card label</string>
+    <string name="header_article_activity">Artikel Pertanian</string>
+    <string name="article">article</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="consectetur_adipiscing_elit_sed_do_eiusmod_tempor">consectetur adipiscing elit, sed do\neiusmod tempor</string>
+    <string name="article_date">12 April 2024</string>
+    <string name="search">"Cari "</string>
+    <string name="Referance">Referensi</string>
+    <string name="search_placeholder">Cari artikel disini</string>
+    <string name="header_article_article_activity">Untuk Kamu</string>
+    <string name="date_article">12 April 2024</string>
+    <string name="article_title">Dijamin Subur! Tanam Sawi hingga...</string>
+    <string name="title_detail_article">Tutorial</string>
+    <string name="arrow_back">arrow back</string>
 </resources>
