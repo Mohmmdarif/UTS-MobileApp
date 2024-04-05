@@ -24,15 +24,12 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        // Temukan card view dan atur onClickListener
         CardView cardView = view.findViewById(R.id.card);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Panggil metode untuk menampilkan fragment_weather.xml
                 displayWeatherFragment();
             }
         });
@@ -43,28 +40,19 @@ public class DashboardFragment extends Fragment {
     private void displayWeatherFragment() {
         FragmentManager fragmentManager = getParentFragmentManager();
 
-        // Hapus fragment sebelumnya (jika ada)
         Fragment previousFragment = fragmentManager.findFragmentById(R.id.fragment_container);
         if (previousFragment != null) {
             fragmentManager.beginTransaction().remove(previousFragment).commitNow();
         }
 
-        // Buat objek WeatherFragment
         WeatherFragment weatherFragment = new WeatherFragment();
 
-        // Mulai transaksi fragment
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Ganti fragment saat ini dengan fragment_weather.xml
         fragmentTransaction.replace(R.id.fragment_container, weatherFragment);
 
-        // Tidak menambahkan transaksi ke back stack
-        // fragmentTransaction.addToBackStack(null); // Hapus baris ini
-
-        // Komit transaksi
         fragmentTransaction.commit();
 
-        // Menghapus CardView dengan id "card" dari fragment sebelumnya
         View previousView = getView();
         if (previousView != null) {
             CardView cardView = previousView.findViewById(R.id.card);
