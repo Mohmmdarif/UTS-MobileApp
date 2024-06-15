@@ -40,7 +40,6 @@ public class ArticleFragment extends Fragment {
 
         articleList = new ArrayList<>();
         // Add articles to the article list
-
         articleList.add(new ArticleItem("Dijamin Subur! Tanam Sawi Hingga...", "12 April 2024", R.drawable.pic_1));
         articleList.add(new ArticleItem("Dijamin Subur! Tanam Sawi Hingga...", "12 April 2024", R.drawable.pic_1));
         articleList.add(new ArticleItem("Dijamin Subur! Tanam Sawi Hingga...", "12 April 2024", R.drawable.pic_1));
@@ -50,6 +49,13 @@ public class ArticleFragment extends Fragment {
 
         articleAdapter = new ArticleAdapter(articleList);
         recyclerView.setAdapter(articleAdapter);
+
+        articleAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ArticleItem article) {
+                displayDetailArticle();
+            }
+        });
 
         return view;
     }

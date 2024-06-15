@@ -102,27 +102,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!--            <HorizontalScrollView-->
-            <!--                android:id="@+id/horizontalScrollView"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:foregroundGravity="center_vertical"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/field_activity_header"-->
-            <!--                tools:layout_editor_absoluteX="-27dp"-->
-            <!--                android:scrollbars="none"-->
-            <!--                android:paddingVertical="10dp"-->
-            <!--                android:background="@color/black"-->
-            <!--                >-->
-
-            <!-- child view -->
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:foregroundGravity="center"-->
-            <!--                    android:gravity="center"-->
-            <!--                    android:orientation="horizontal"-->
-            <!--                    >-->
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewArticle"
                 android:layout_width="wrap_content"
@@ -133,11 +112,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/field_activity_header" />
-
-            <!--                </LinearLayout>-->
-
-            <!--            </HorizontalScrollView>-->
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
