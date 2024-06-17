@@ -5,24 +5,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.tanialtech.R;
-import com.example.tanialtech.article.data.ArticleItem;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tanialtech.R;
+import com.example.tanialtech.article.data.MoreArticle;
+
 import java.util.List;
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
-    private List<ArticleItem> articleList;
+public class MoreArticleAdapter extends RecyclerView.Adapter<MoreArticleAdapter.ArticleViewHolder> {
+
+    private List<MoreArticle> moreArticleList;
     private OnItemClickListener onItemClickListener;
 
-    public ArticleAdapter(List<ArticleItem> articleList) {
-        this.articleList = articleList;
+    public MoreArticleAdapter(List<MoreArticle> moreArticleList) {
+        this.moreArticleList = moreArticleList;
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ArticleItem article);
+        void onItemClick(MoreArticle article1);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -33,16 +35,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     @Override
     public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.article_item, parent, false);
+                .inflate(R.layout.more_article_item, parent, false);
         return new ArticleViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
-        ArticleItem article = articleList.get(position);
-        holder.articleImage.setImageResource(article.getImageResId());
-        holder.articleTitle.setText(article.getTitle());
-        holder.articleDate.setText(article.getDate());
+        MoreArticle article = moreArticleList.get(position);
+        holder.moreArticleImage.setImageResource(article.getImageResId());
+        holder.moreArticleTitle.setText(article.getTitle());
+        holder.moreArticleDesc.setText(article.getDesc());
+        holder.moreArticleDate.setText(article.getDate());
 
         holder.itemView.setOnClickListener(v -> {
             if(onItemClickListener != null) {
@@ -53,20 +56,21 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     @Override
     public int getItemCount() {
-        return articleList.size();
+        return moreArticleList.size();
     }
 
     public static class ArticleViewHolder extends RecyclerView.ViewHolder {
-        public ImageView articleImage;
-        public TextView articleTitle;
-        public TextView articleDate;
+        public ImageView moreArticleImage;
+        public TextView moreArticleTitle;
+        public TextView moreArticleDesc;
+        public TextView moreArticleDate;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
-            articleImage = itemView.findViewById(R.id.card_image);
-            articleTitle = itemView.findViewById(R.id.article_title);
-            articleDate = itemView.findViewById(R.id.article_date);
+            moreArticleImage = itemView.findViewById(R.id.more_article_image);
+            moreArticleTitle = itemView.findViewById(R.id.more_article_title);
+            moreArticleDesc = itemView.findViewById(R.id.more_article_desc);
+            moreArticleDate = itemView.findViewById(R.id.more_article_date);
         }
     }
-
 }
