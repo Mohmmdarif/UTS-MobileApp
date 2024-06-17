@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import com.example.tanialtech.DetailArticleFragment;
 import com.example.tanialtech.R;
 import com.example.tanialtech.article.adapter.ArticleAdapter;
+import com.example.tanialtech.article.adapter.MoreArticleAdapter;
 import com.example.tanialtech.article.data.ArticleItem;
+import com.example.tanialtech.article.data.MoreArticle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleFragment extends Fragment {
-    private ArticleAdapter articleAdapter;
-    private List<ArticleItem> articleList;
 
     public ArticleFragment() {
         // Required empty public constructor
@@ -35,10 +35,16 @@ public class ArticleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_article, container, false);
 
+        // Recyclerview 1
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewArticle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        articleList = new ArrayList<>();
+        // Recyclerview 2
+        RecyclerView recyclerView1 = view.findViewById(R.id.more_article);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        // List Recyclerview 1
+        List<ArticleItem> articleList = new ArrayList<>();
         // Add articles to the article list
         articleList.add(new ArticleItem("Dijamin Subur! Tanam Sawi Hingga...", "12 April 2024", R.drawable.pic_1));
         articleList.add(new ArticleItem("Dijamin Subur! Tanam Sawi Hingga...", "12 April 2024", R.drawable.pic_1));
@@ -47,15 +53,24 @@ public class ArticleFragment extends Fragment {
 
         // Add more articles...
 
-        articleAdapter = new ArticleAdapter(articleList);
+        // List Recyclerview 1
+        List<MoreArticle> moreArticleList = new ArrayList<>();
+        // Add articles to the article list
+        moreArticleList.add(new MoreArticle(R.drawable.frame_article_image, "Lorem ipsum dolor sit amet", "consectetur adipiscing elit, sed do eiusmod tempor", "12 April 2024"));
+        moreArticleList.add(new MoreArticle(R.drawable.frame_article_image, "Lorem ipsum dolor sit amet", "consectetur adipiscing elit, sed do eiusmod tempor", "12 April 2024"));
+        moreArticleList.add(new MoreArticle(R.drawable.frame_article_image, "Lorem ipsum dolor sit amet", "consectetur adipiscing elit, sed do eiusmod tempor", "12 April 2024"));
+        moreArticleList.add(new MoreArticle(R.drawable.frame_article_image, "Lorem ipsum dolor sit amet", "consectetur adipiscing elit, sed do eiusmod tempor", "12 April 2024"));
+
+        // Set Adapter 1
+        ArticleAdapter articleAdapter = new ArticleAdapter(articleList);
         recyclerView.setAdapter(articleAdapter);
 
-        articleAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(ArticleItem article) {
-                displayDetailArticle();
-            }
-        });
+        // Set Adapter 2
+        MoreArticleAdapter moreArticleAdapter = new MoreArticleAdapter(moreArticleList);
+        recyclerView1.setAdapter(moreArticleAdapter);
+
+        articleAdapter.setOnItemClickListener(article -> displayDetailArticle());
+        moreArticleAdapter.setOnItemClickListener(article1 -> displayDetailArticle());
 
         return view;
     }

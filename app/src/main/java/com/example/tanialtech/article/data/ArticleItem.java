@@ -1,9 +1,9 @@
 package com.example.tanialtech.article.data;
 
 public class ArticleItem {
-    private int imageResId;
-    private String title;
-    private String date;
+    private final int imageResId;
+    private final String title;
+    private final String date;
 
     public ArticleItem(String title, String date, int imageResId) {
         this.title = title;

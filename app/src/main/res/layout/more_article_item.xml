@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:strokeColor="@android:color/transparent"
+    android:layout_marginHorizontal="10dp"
+    app:strokeWidth="0dp"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="0dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/article_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/article_activity_header"
+        app:cardElevation="0dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/more_article_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frame_article_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/article"
+                />
+
+            <TextView
+                android:id="@+id/more_article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum_dolor_sit_amet"
+                app:layout_constraintStart_toEndOf="@+id/more_article_image"
+                app:layout_constraintTop_toTopOf="@+id/more_article_image"
+                android:fontFamily="@font/maison_neue_bold"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <TextView
+                android:id="@+id/more_article_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
+                app:layout_constraintTop_toBottomOf="@+id/more_article_title"
+                app:layout_constraintStart_toStartOf="@id/more_article_title"
+                android:fontFamily="@font/maison_neue_book"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/more_article_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/article_date"
+                app:layout_constraintStart_toStartOf="@id/more_article_title"
+                app:layout_constraintTop_toBottomOf="@+id/more_article_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/more_article_image"
+                android:fontFamily="@font/maison_neue_book"
+                android:textSize="12sp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</com.google.android.material.card.MaterialCardView>

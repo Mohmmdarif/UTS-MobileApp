@@ -115,283 +115,39 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/section4"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/section1"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginHorizontal="20dp"-->
-<!--            >-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/section4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/section1"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            >
 
-<!--            <TextView-->
-<!--                android:id="@+id/article_activity_header"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/header_article_activity"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                android:textSize="16sp"-->
-<!--                android:fontFamily="@font/maison_neue_bold"-->
-<!--                />-->
+            <TextView
+                android:id="@+id/article_activity_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/header_article_activity"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/maison_neue_bold"
+                />
 
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/article_1"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/article_activity_header"-->
-<!--                app:cardElevation="0dp"-->
-<!--                >-->
+                <androidx.recyclerview.widget.RecyclerView
+                    tools:listitem="@layout/more_article_item"
+                    android:id="@+id/more_article"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:scrollbars="vertical"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/article_activity_header" />
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    >-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/article_image"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/frame_article_image"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        android:contentDescription="@string/article"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_title"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/lorem_ipsum_dolor_sit_amet"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/article_image"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/article_image"-->
-<!--                        android:fontFamily="@font/maison_neue_bold"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:layout_marginHorizontal="10dp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_desc"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_title"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_date"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/article_date"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_desc"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@+id/article_image"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-
-<!--            &lt;!&ndash; card 2 &ndash;&gt;-->
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/article_2"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/article_1"-->
-<!--                app:cardElevation="0dp"-->
-<!--                >-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    >-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/article_image2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/frame_article_image"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        android:contentDescription="@string/article"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_title2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/lorem_ipsum_dolor_sit_amet"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/article_image2"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/article_image2"-->
-<!--                        android:fontFamily="@font/maison_neue_bold"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:layout_marginHorizontal="10dp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_desc2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_title2"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title2"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_date2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/article_date"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title2"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_desc2"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@+id/article_image2"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            &lt;!&ndash; card 3 &ndash;&gt;-->
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/article_3"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/article_2"-->
-<!--                app:cardElevation="0dp"-->
-<!--                >-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    >-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/article_image3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/frame_article_image"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        android:contentDescription="@string/article"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_title3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/lorem_ipsum_dolor_sit_amet"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/article_image3"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/article_image3"-->
-<!--                        android:fontFamily="@font/maison_neue_bold"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:layout_marginHorizontal="10dp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_desc3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_title3"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title3"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_date3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/article_date"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title3"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_desc3"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@+id/article_image3"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            &lt;!&ndash; card 4 &ndash;&gt;-->
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/article_4"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/article_3"-->
-<!--                app:cardElevation="0dp"-->
-<!--                >-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    >-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/article_image4"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/frame_article_image"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        android:contentDescription="@string/article"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_title4"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/lorem_ipsum_dolor_sit_amet"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/article_image4"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/article_image4"-->
-<!--                        android:fontFamily="@font/maison_neue_bold"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:layout_marginHorizontal="10dp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_desc4"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_title4"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title4"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/article_date4"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/article_date"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/article_title4"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/article_desc4"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@+id/article_image4"-->
-<!--                        android:fontFamily="@font/maison_neue_book"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
