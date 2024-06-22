@@ -39,6 +39,10 @@ public class RecyclerViewField extends Fragment {
         return rootView;
     }
 
+    public void setFilteredData(ArrayList<FieldItem> filteredData) {
+        adapter.setFieldData(filteredData);
+    }
+
     public void setFieldData(ArrayList<FieldItem> data) {
         // Menghapus data sebelumnya (jika ada)
         fieldItems.clear();

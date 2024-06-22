@@ -1,23 +1,163 @@
+//package com.example.tanialtech.field;
+//
+//import android.os.Bundle;
+//
+//import androidx.fragment.app.Fragment;
+//
+//import android.util.Base64;
+//import android.util.Log;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.FrameLayout;
+//import android.widget.ImageView;
+//import android.widget.RelativeLayout;
+//
+//import com.android.volley.Request;
+//import com.android.volley.RequestQueue;
+//import com.android.volley.Response;
+//import com.android.volley.VolleyError;
+//import com.android.volley.toolbox.StringRequest;
+//import com.android.volley.toolbox.Volley;
+//import com.example.tanialtech.R;
+//import com.example.tanialtech.field.data.FieldItem;
+//
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
+//
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.Map;
+//
+//
+//public class FieldFragment extends Fragment {
+//
+//    private String url = "https://tanial-tech-worker.ibnunazm-a11.workers.dev/fields";
+//
+//    public FieldFragment() {
+//        // Required empty public constructor
+//    }
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View view = inflater.inflate(R.layout.fragment_field, container, false);
+//
+//        FrameLayout frameLayout = view.findViewById(R.id.frameLayout);
+//
+//        RecyclerViewField recyclerViewField = new RecyclerViewField();
+//
+//        getChildFragmentManager().beginTransaction().replace(R.id.frameLayout, recyclerViewField).commit();
+//
+//        view.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                ArrayList<FieldItem> fieldItems = getFieldItems();
+//                recyclerViewField.setFieldData(fieldItems);
+//                getData();
+//            }
+//        });
+//
+//        RelativeLayout tambahButton = view.findViewById(R.id.tombol_tambah_ladang);
+//        tambahButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showFormTambahLadangDialog();
+//            }
+//        });
+//
+//
+//        return view;
+//    }
+//
+//    private ArrayList<FieldItem> getFieldItems() {
+//        ArrayList<FieldItem> fieldItems = new ArrayList<>();
+//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 1", "S-01", "120", "30"));
+//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 2", "S-02", "130", "40"));
+//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 3", "S-03", "110", "27"));
+//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang tetangga", "S-04", "110", "27"));
+//
+//        return fieldItems;
+//    }
+//
+//    private void showFormTambahLadangDialog() {
+//        FormTambahLadangDialogFragment dialogFragment = new FormTambahLadangDialogFragment();
+//        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
+//    }
+//
+//    private void getData() {
+//        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+////                    JSONObject jsonObject = new JSONObject(response);
+//                    JSONArray jsonArray = new JSONArray(response);
+//                    JSONObject jsonObject = jsonArray.getJSONObject(jsonArray);
+//                    Log.d("aa", String.valueOf(jsonArray));
+//                } catch (JSONException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                Map<String, String> headers = new HashMap<>();
+//                headers.put("Authorization", "Basic " + Base64.encodeToString("ibnunazm:ibnunazm.a11".getBytes(), Base64.NO_WRAP));
+//                return headers;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+//    }
+//}
+
 package com.example.tanialtech.field;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+//import android.widget.FrameLayout;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.data.FieldItem;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FieldFragment extends Fragment {
+
+    private String url = "https://api-simdoks.simdoks.web.id/fields";
+    private ArrayList<FieldItem> fieldItems = new ArrayList<>();
+    private RecyclerViewField recyclerViewField;
 
     public FieldFragment() {
         // Required empty public constructor
@@ -29,17 +169,19 @@ public class FieldFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_field, container, false);
 
-        FrameLayout frameLayout = view.findViewById(R.id.frameLayout);
+//        FrameLayout frameLayout = view.findViewById(R.id.frameLayout);
 
-        RecyclerViewField recyclerViewField = new RecyclerViewField();
+        recyclerViewField = new RecyclerViewField();
 
         getChildFragmentManager().beginTransaction().replace(R.id.frameLayout, recyclerViewField).commit();
 
         view.post(new Runnable() {
             @Override
             public void run() {
-                ArrayList<FieldItem> fieldItems = getFieldItems();
+                // Initialize with local data if necessary
+                fieldItems = getFieldItems(null);
                 recyclerViewField.setFieldData(fieldItems);
+                getData();
             }
         });
 
@@ -51,20 +193,107 @@ public class FieldFragment extends Fragment {
             }
         });
 
+        RelativeLayout searchField = view.findViewById(R.id.search_layout);
+        EditText searchText = view.findViewById(R.id.search);
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int user_id = 1; // ID pengguna yang sesuai
+                searchField(user_id, s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         return view;
     }
-    private ArrayList<FieldItem> getFieldItems() {
+
+    private ArrayList<FieldItem> getFieldItems(JSONArray jsonArray) {
         ArrayList<FieldItem> fieldItems = new ArrayList<>();
-        fieldItems.add(new FieldItem(R.drawable.pic_1,"Ladang 1","S-01","120","30"));
-        fieldItems.add(new FieldItem(R.drawable.pic_1,"Ladang 2","S-02","130","40"));
-        fieldItems.add(new FieldItem(R.drawable.pic_1,"Ladang 3","S-03","110","27"));
-        fieldItems.add(new FieldItem(R.drawable.pic_1,"Ladang tetangga","S-04","110","27"));
+
+        if (jsonArray != null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                try {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    int id = jsonObject.getInt("id");
+                    int user_id = jsonObject.getInt("user_id");
+                    String name = jsonObject.getString("name");
+                    String code = jsonObject.getString("code");
+                    int size = jsonObject.getInt("size");
+                    String harvest_time = jsonObject.getString("harvest_time");
+                    String img_url = jsonObject.getString("img_url");
+
+                    // Buat FieldItem baru dan tambahkan ke daftar
+                    fieldItems.add(new FieldItem(
+                            img_url,
+                            name,
+                            code,
+                            String.valueOf(size),
+                            harvest_time
+                    ));
+                } catch (JSONException e) {
+                    Log.e("Volley", "JSON parsing error: " + e.getMessage());
+                }
+            }
+        }
 
         return fieldItems;
     }
+
     private void showFormTambahLadangDialog() {
         FormTambahLadangDialogFragment dialogFragment = new FormTambahLadangDialogFragment();
-        dialogFragment.show(getChildFragmentManager(),"FormTambahLadangDialogFragment");
+        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
     }
+
+    private void getData() {
+        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    // Dapatkan data field dari API dan tambahkan ke RecyclerView
+                    fieldItems = getFieldItems(jsonArray);
+                    recyclerViewField.setFieldData(fieldItems);
+                } catch (JSONException e) {
+                    Log.e("Volley", "JSON parsing error: " + e.getMessage());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", "Error fetching data: " + error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Basic " + Base64.encodeToString("ibnunazm:ibnunazm.a11".getBytes(), Base64.NO_WRAP));
+                return headers;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+private void searchField(int user_id, String query) {
+    ArrayList<FieldItem> filteredList = new ArrayList<>();
+    for (FieldItem item : fieldItems) {
+        if (item.getNamaLadang().toLowerCase().contains(query.toLowerCase()) ||
+                item.getKodeLadang().toLowerCase().contains(query.toLowerCase()) ||
+                item.getLuasLadang().toLowerCase().contains(query.toLowerCase())) {
+            filteredList.add(item);
+        }
+    }
+    recyclerViewField.setFilteredData(filteredList);
 }
+}
+
+

@@ -2,15 +2,15 @@ package com.example.tanialtech.field.data;
 
 public class FieldItem {
 
-    private int imageResource;
+    private String imageResource;
     private String namaLadang;
     private String kodeLadang;
 
-    public int getImageResource() {
+    public String getImageResource() {
         return imageResource;
     }
 
-    public void setImageResource(int imageResource) {
+    public void setImageResource(String imageResource) {
         this.imageResource = imageResource;
     }
 
@@ -52,7 +52,18 @@ public class FieldItem {
 
     private String perkiraanMasaTanam;
 
-    public FieldItem(int imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam) {
+    @Override
+    public String toString() {
+        return "FieldItem{" +
+                "imageResource='" + imageResource + '\'' +
+                ", namaLadang='" + namaLadang + '\'' +
+                ", kodeLadang='" + kodeLadang + '\'' +
+                ", luasLadang='" + luasLadang + '\'' +
+                ", perkiraanMasaTanam='" + perkiraanMasaTanam + '\'' +
+                '}';
+    }
+
+    public FieldItem(String imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam) {
         this.imageResource = imageResource;
         this.namaLadang = namaLadang;
         this.kodeLadang = kodeLadang;

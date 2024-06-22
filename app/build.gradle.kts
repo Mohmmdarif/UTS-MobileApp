@@ -41,6 +41,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("me.relex:circleindicator:2.1.6")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0")
 }
