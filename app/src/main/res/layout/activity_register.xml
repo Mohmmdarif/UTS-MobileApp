@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="login"
-    tools:context=".RegisterActivity">
+    tools:context=".login_register.RegisterActivity">
 
     <ImageView
         android:id="@+id/bgLogin"
@@ -100,7 +100,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/unameInputLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
 
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,9 +109,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/unameEditText"
-                        android:textSize="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="14sp"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -133,7 +133,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordInputLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +141,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordEditText"
-                        android:textSize="8dp"
+                        android:textSize="14sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_eye"
