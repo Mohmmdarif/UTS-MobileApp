@@ -1,7 +1,6 @@
 package com.example.tanialtech.field.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.example.tanialtech.field.data.FieldItem;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -25,13 +23,21 @@ import java.util.Locale;
 public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHolder> {
 
     private List<FieldItem> ladangList;
-    private Context mContext;
+//    private Context mContext;
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(FieldItem item);
+    }
 
     public FieldAdapter(Context context, List<FieldItem> ladangList){
-        this.mContext = context;
+//        this.mContext = context;
         this.ladangList = ladangList;
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
 
     @NonNull
@@ -56,6 +62,8 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
     @Override
     public void onBindViewHolder(@NonNull FieldViewHolder holder, int position) {
         FieldItem field = ladangList.get(position);
+        holder.bind(field, onItemClickListener);
+
         holder.namaLadang.setText(field.getNamaLadang());
         holder.kodeLadang.setText(field.getKodeLadang());
         holder.luasLadang.setText(field.getLuasLadang());
@@ -88,6 +96,25 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
             kodeLadang = itemView.findViewById(R.id.kode_ladang);
             luasLadang = itemView.findViewById(R.id.luas_ladang);
             perkiraanMasaTanam = itemView.findViewById(R.id.perkiraan_masa_tanam);
+        }
+
+        public void bind(FieldItem item, OnItemClickListener listener) {
+            namaLadang.setText(item.getNamaLadang());
+            kodeLadang.setText(item.getKodeLadang());
+            luasLadang.setText(item.getLuasLadang());
+            perkiraanMasaTanam.setText(item.getPerkiraanMasaTanam());
+
+            Glide.with(itemView.getContext())
+                    .load("https://api-simdoks.simdoks.web.id/" + item.getImageResource())
+                    .placeholder(R.drawable.pic_1)
+                    .error(R.drawable.pic_1)
+                    .into(imageLadang);
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

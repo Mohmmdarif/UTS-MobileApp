@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,8 +28,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.VolleyMultipartRequest;
+import com.example.tanialtech.field.data.FieldItem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -36,20 +41,29 @@ import java.util.Map;
 public class FormTambahLadangDialogFragment extends DialogFragment {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-
+    private static final String ARG_FIELD_ITEM = "field_item";
     private EditText inputNamaLadang, inputKodeLadang, inputLuasLadang, inputPerkiraanLadang;
     private ImageView fotoLadang;
     private Uri imageUri;
     private Bitmap bitmap;
+    private FieldItem fieldItem;
 
-    public FormTambahLadangDialogFragment() {
-        // Required empty public constructor
+    public static FormTambahLadangDialogFragment newInstance(FieldItem item) {
+        FormTambahLadangDialogFragment fragment = new FormTambahLadangDialogFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(ARG_FIELD_ITEM, (Parcelable) item);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.RoundedDialogTheme);
+
+        if (getArguments() != null) {
+            fieldItem = getArguments().getParcelable(ARG_FIELD_ITEM);
+        }
     }
 
     @Override
@@ -72,10 +86,21 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
             if (validateForm()) {
                 PostFieldForm();
             }
-//            else {
-//                Toast.makeText(getActivity(), "Harap isi semua data sebelum menyimpan.", Toast.LENGTH_SHORT).show();
-//            }
         });
+
+        // mengambil inputan sebelumnya
+        if (fieldItem != null) {
+            inputNamaLadang.setText(fieldItem.getNamaLadang());
+            inputKodeLadang.setText(fieldItem.getKodeLadang());
+            inputLuasLadang.setText(fieldItem.getLuasLadang());
+            inputPerkiraanLadang.setText(fieldItem.getPerkiraanMasaTanam());
+
+            Glide.with(this)
+                    .load("https://api-simdoks.simdoks.web.id/" + fieldItem.getImageResource())
+                    .placeholder(R.drawable.pic_1)
+                    .error(R.drawable.pic_1)
+                    .into(fotoLadang);
+        }
 
         return view;
     }
@@ -187,9 +212,56 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         Volley.newRequestQueue(getActivity()).add(multipartRequest);
     }
 
+    private void PutFieldForm() {
+        String url = "https://api-simdoks.simdoks.web.id/field/" + fieldItem.getId(); // URL API dengan ID field
+
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.PUT, url,
+                new Response.Listener<NetworkResponse>() {
+                    @Override
+                    public void onResponse(NetworkResponse response) {
+                        // Handle response dari server
+                        Toast.makeText(getActivity(), "Data berhasil diperbarui!", Toast.LENGTH_SHORT).show();
+                        clearForm();
+                        dismiss();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                        Toast.makeText(getActivity(), "Gagal memperbarui data!: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id", String.valueOf(1));
+                params.put("name", inputNamaLadang.getText().toString().trim());
+                params.put("code", inputKodeLadang.getText().toString().trim());
+                params.put("size", inputLuasLadang.getText().toString().trim());
+                params.put("planting_period", inputPerkiraanLadang.getText().toString().trim());
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() throws AuthFailureError {
+                Map<String, DataPart> params = new HashMap<>();
+                if (bitmap != null) {
+                    params.put("img", new DataPart("ladang_image.jpg", getFileDataFromDrawable(bitmap)));
+                }
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(getActivity()).add(multipartRequest);
+    }
+
+
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
+
 }

@@ -1,128 +1,9 @@
-//package com.example.tanialtech.field;
-//
-//import android.os.Bundle;
-//
-//import androidx.fragment.app.Fragment;
-//
-//import android.util.Base64;
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.FrameLayout;
-//import android.widget.ImageView;
-//import android.widget.RelativeLayout;
-//
-//import com.android.volley.Request;
-//import com.android.volley.RequestQueue;
-//import com.android.volley.Response;
-//import com.android.volley.VolleyError;
-//import com.android.volley.toolbox.StringRequest;
-//import com.android.volley.toolbox.Volley;
-//import com.example.tanialtech.R;
-//import com.example.tanialtech.field.data.FieldItem;
-//
-//import org.json.JSONArray;
-//import org.json.JSONException;
-//import org.json.JSONObject;
-//
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.Map;
-//
-//
-//public class FieldFragment extends Fragment {
-//
-//    private String url = "https://tanial-tech-worker.ibnunazm-a11.workers.dev/fields";
-//
-//    public FieldFragment() {
-//        // Required empty public constructor
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_field, container, false);
-//
-//        FrameLayout frameLayout = view.findViewById(R.id.frameLayout);
-//
-//        RecyclerViewField recyclerViewField = new RecyclerViewField();
-//
-//        getChildFragmentManager().beginTransaction().replace(R.id.frameLayout, recyclerViewField).commit();
-//
-//        view.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                ArrayList<FieldItem> fieldItems = getFieldItems();
-//                recyclerViewField.setFieldData(fieldItems);
-//                getData();
-//            }
-//        });
-//
-//        RelativeLayout tambahButton = view.findViewById(R.id.tombol_tambah_ladang);
-//        tambahButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showFormTambahLadangDialog();
-//            }
-//        });
-//
-//
-//        return view;
-//    }
-//
-//    private ArrayList<FieldItem> getFieldItems() {
-//        ArrayList<FieldItem> fieldItems = new ArrayList<>();
-//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 1", "S-01", "120", "30"));
-//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 2", "S-02", "130", "40"));
-//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang 3", "S-03", "110", "27"));
-//        fieldItems.add(new FieldItem(R.drawable.pic_1, "Ladang tetangga", "S-04", "110", "27"));
-//
-//        return fieldItems;
-//    }
-//
-//    private void showFormTambahLadangDialog() {
-//        FormTambahLadangDialogFragment dialogFragment = new FormTambahLadangDialogFragment();
-//        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
-//    }
-//
-//    private void getData() {
-//        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-////                    JSONObject jsonObject = new JSONObject(response);
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    JSONObject jsonObject = jsonArray.getJSONObject(jsonArray);
-//                    Log.d("aa", String.valueOf(jsonArray));
-//                } catch (JSONException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() {
-//                Map<String, String> headers = new HashMap<>();
-//                headers.put("Authorization", "Basic " + Base64.encodeToString("ibnunazm:ibnunazm.a11".getBytes(), Base64.NO_WRAP));
-//                return headers;
-//            }
-//        };
-//        requestQueue.add(stringRequest);
-//    }
-//}
-
 package com.example.tanialtech.field;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -133,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 //import android.widget.FrameLayout;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
@@ -141,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tanialtech.ProfileFragment;
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.data.FieldItem;
 
@@ -169,8 +52,6 @@ public class FieldFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_field, container, false);
 
-//        FrameLayout frameLayout = view.findViewById(R.id.frameLayout);
-
         recyclerViewField = new RecyclerViewField();
 
         getChildFragmentManager().beginTransaction().replace(R.id.frameLayout, recyclerViewField).commit();
@@ -185,15 +66,11 @@ public class FieldFragment extends Fragment {
             }
         });
 
+        // show modal dialog
         RelativeLayout tambahButton = view.findViewById(R.id.tombol_tambah_ladang);
-        tambahButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showFormTambahLadangDialog();
-            }
-        });
+        tambahButton.setOnClickListener(v -> showFormTambahLadangDialog());
 
-        RelativeLayout searchField = view.findViewById(R.id.search_layout);
+        // Search filter
         EditText searchText = view.findViewById(R.id.search);
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -210,6 +87,18 @@ public class FieldFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+
+        // Intent to profile screen
+        ImageView profile = view.findViewById(R.id.profile_icon);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new ProfileFragment());
+                transaction.addToBackStack(null);  // Tambahkan ke back stack agar bisa kembali ke fragment sebelumnya
+                transaction.commit();
             }
         });
 
@@ -283,17 +172,22 @@ public class FieldFragment extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-private void searchField(int user_id, String query) {
-    ArrayList<FieldItem> filteredList = new ArrayList<>();
-    for (FieldItem item : fieldItems) {
-        if (item.getNamaLadang().toLowerCase().contains(query.toLowerCase()) ||
-                item.getKodeLadang().toLowerCase().contains(query.toLowerCase()) ||
-                item.getLuasLadang().toLowerCase().contains(query.toLowerCase())) {
-            filteredList.add(item);
-        }
+    private void showEditDialog(FieldItem item) {
+        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
+        dialogFragment.show(getChildFragmentManager(), "FormEditLadangDialogFragment");
     }
-    recyclerViewField.setFilteredData(filteredList);
-}
+
+    private void searchField(int user_id, String query) {
+        ArrayList<FieldItem> filteredList = new ArrayList<>();
+        for (FieldItem item : fieldItems) {
+            if (item.getNamaLadang().toLowerCase().contains(query.toLowerCase()) ||
+                    item.getKodeLadang().toLowerCase().contains(query.toLowerCase()) ||
+                    item.getLuasLadang().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        recyclerViewField.setFilteredData(filteredList);
+    }
 }
 
 

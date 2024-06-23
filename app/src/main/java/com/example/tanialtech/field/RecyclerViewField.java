@@ -36,7 +36,19 @@ public class RecyclerViewField extends Fragment {
         adapter = new FieldAdapter(getContext(), fieldItems);
         rvField.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new FieldAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(FieldItem item) {
+                showFormTambahLadangDialog(item);
+            }
+        });
+
         return rootView;
+    }
+
+    private void showFormTambahLadangDialog(FieldItem item) {
+        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
+        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
     }
 
     public void setFilteredData(ArrayList<FieldItem> filteredData) {
