@@ -2,15 +2,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".DashboardFragment">
+    tools:context=".Dashboard.DashboardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
         
         <TextView
             android:id="@+id/hello"
@@ -120,15 +121,33 @@
                         android:fontFamily="@font/maison_neue_bold"
                         />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginEnd="28dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="26dp"
-                        android:layout_marginTop="20dp"
-                        android:contentDescription="@string/cloud_status"
-                        android:src="@drawable/cloudy" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/img_weather"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:contentDescription="@string/cloud_status"
+                            android:src="@drawable/cerah" />
+
+                        <TextView
+                            android:id="@+id/deskripsiCuaca"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Berawan"
+                            android:textSize="11sp" />
+                    </LinearLayout>
 
                     <View
                         android:id="@+id/divider"
@@ -149,119 +168,115 @@
                     android:layout_marginTop="50dp"
                     >
 
-                    <ImageView
+                    <LinearLayout
                         android:id="@+id/kelembapan"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/kelembapan_logo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/angin"
-                        android:contentDescription="@string/label_kelembapan"
-                        />
+                        app:layout_constraintEnd_toStartOf="@+id/angin">
 
-                    <ImageView
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/kelembapan_logo"
+                            android:contentDescription="@string/label_kelembapan"
+                            />
+
+                        <TextView
+                            android:id="@+id/label_kelembapan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_kelembapan"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/maison_neue_book"
+                            />
+                        <TextView
+                            android:id="@+id/status_kelembapan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/informasi_kelembapan"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/maison_neue_bold"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/angin"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/angin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/kelembapan"
-                        app:layout_constraintEnd_toStartOf="@+id/tekanan"
-                        android:contentDescription="@string/label_angin"
-                        />
+                        app:layout_constraintEnd_toStartOf="@+id/tekanan">
 
-                    <ImageView
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/angin"
+                            android:contentDescription="@string/label_angin"
+                            />
+
+                        <TextView
+                            android:id="@+id/label_angin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_angin"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/maison_neue_book"
+                            />
+                        <TextView
+                            android:id="@+id/status_angin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/informasi_angin"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/maison_neue_bold"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/tekanan"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/tekanan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/angin"
-                        android:contentDescription="@string/label_tekanan"
-                        />
+                        app:layout_constraintStart_toEndOf="@+id/angin">
 
-                    <TextView
-                        android:id="@+id/label_kelembapan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_kelembapan"
-                        app:layout_constraintTop_toBottomOf="@+id/kelembapan"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/label_angin"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="18dp"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/maison_neue_book"
-                        />
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/tekanan"
+                            android:contentDescription="@string/label_angin"
+                            />
 
-                    <TextView
-                        android:id="@+id/label_angin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_angin"
-                        app:layout_constraintTop_toBottomOf="@+id/angin"
-                        app:layout_constraintStart_toEndOf="@+id/label_kelembapan"
-                        app:layout_constraintEnd_toStartOf="@+id/label_tekanan"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="25dp"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/maison_neue_book"
-                        />
+                        <TextView
+                            android:id="@+id/label_tekanan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_tekanan"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/maison_neue_book"
+                            />
+                        <TextView
+                            android:id="@+id/status_tekanan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/informasi_tekanan"
 
-                    <TextView
-                        android:id="@+id/label_tekanan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_tekanan"
-                        app:layout_constraintTop_toBottomOf="@+id/tekanan"
-                        app:layout_constraintStart_toEndOf="@+id/label_angin"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="10dp"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/maison_neue_book"
-                        />
+                            android:textSize="16sp"
+                            android:fontFamily="@font/maison_neue_bold"
+                            />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/status_kelembapan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/informasi_kelembapan"
-                        app:layout_constraintTop_toBottomOf="@+id/label_kelembapan"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/status_angin"
-                        android:layout_marginStart="10dp"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/maison_neue_bold"
-                        />
-
-                    <TextView
-                        android:id="@+id/status_angin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/informasi_angin"
-                        app:layout_constraintTop_toBottomOf="@+id/label_angin"
-                        app:layout_constraintStart_toEndOf="@+id/status_kelembapan"
-                        app:layout_constraintEnd_toStartOf="@+id/status_tekanan"
-                        android:layout_marginStart="20dp"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/maison_neue_bold"
-                        />
-
-                    <TextView
-                        android:id="@+id/status_tekanan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/informasi_tekanan"
-                        app:layout_constraintTop_toBottomOf="@+id/label_tekanan"
-                        app:layout_constraintStart_toEndOf="@+id/status_angin"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginStart="10dp"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/maison_neue_bold"
-                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -288,6 +303,7 @@
                 />
 
             <TextView
+                android:id="@+id/todoFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/see_more_navigation"
@@ -299,55 +315,30 @@
                 android:textColor="@color/green"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                app:layout_constraintTop_toBottomOf="@id/daily_activity_header"
-                android:layout_marginTop="12dp"
-                >
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_lightgreen"
-                    android:padding="10dp"
-                    >
-
-                    <CheckBox
-                        android:id="@+id/checklistBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:text="@string/checkbox_label"
-                        android:paddingStart="5dp"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/maison_neue_medium"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/time"
-                        app:layout_constraintTop_toTopOf="@+id/checklistBox"
-                        app:layout_constraintStart_toStartOf="@+id/checklistBox"
-                        app:layout_constraintBottom_toBottomOf="@+id/checklistBox"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginStart="40dp"
-                        android:textSize="14sp"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewTodo"
+            app:layout_constraintTop_toBottomOf="@+id/section2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="10dp"/>
+        <TextView
+            android:id="@+id/noTodoData"
+            app:layout_constraintTop_toBottomOf="@+id/section2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:text="No Todo"
+            android:gravity="center"
+            android:paddingVertical="10dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/section3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/section2"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewTodo"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             >
@@ -364,6 +355,7 @@
                 />
 
             <TextView
+                android:id="@+id/fieldFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/see_more_navigation"
@@ -375,291 +367,31 @@
                 android:textColor="@color/green"
                 />
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:foregroundGravity="center_vertical"
-                app:layout_constraintTop_toBottomOf="@+id/field_activity_header"
-                tools:layout_editor_absoluteX="-27dp"
-                android:scrollbars="none"
-                android:paddingVertical="10dp"
-                >
-
-                <!-- child view -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    >
-
-                    <!-- LinearLayout children -->
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_marginHorizontal="5dp"
-                        app:cardElevation="0dp"
-                        >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="2dp"
-                            >
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/card_image1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/card_title"
-                                android:src="@drawable/pic_1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/RoundedImageview"
-                                />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/card_label"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:contentDescription="@string/card_label"
-                                />
-
-                            <TextView
-                                android:id="@+id/card_title1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/maison_neue_bold"
-                                android:text="@string/card_title"
-                                android:textSize="14sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_image1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:fontFamily="@font/maison_neue_medium"
-                                android:text="@string/code_id"
-                                android:textSize="12sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_title1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_margin="5dp"
-                        app:cardElevation="0dp"
-                        >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="2dp"
-                            >
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/card_image2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/card_title"
-                                android:src="@drawable/pic_1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/RoundedImageview"
-                                />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/card_label"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:contentDescription="@string/card_label"
-                                />
-
-                            <TextView
-                                android:id="@+id/card_title2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/maison_neue_bold"
-                                android:text="@string/card_title"
-                                android:textSize="14sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_image2"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:fontFamily="@font/maison_neue_medium"
-                                android:text="@string/code_id"
-                                android:textSize="12sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_title2"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_marginHorizontal="5dp"
-                        app:cardElevation="0dp"
-                        >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="2dp"
-                            >
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/card_image3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/card_title"
-                                android:src="@drawable/pic_1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/RoundedImageview"
-                                />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/card_label"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:contentDescription="@string/card_label"
-                                />
-
-                            <TextView
-                                android:id="@+id/card_title3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/maison_neue_bold"
-                                android:text="@string/card_title"
-                                android:textSize="14sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_image3"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:fontFamily="@font/maison_neue_medium"
-                                android:text="@string/code_id"
-                                android:textSize="12sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_title3"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="8dp"
-                        android:layout_marginHorizontal="5dp"
-                        app:cardElevation="0dp"
-                        >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="2dp"
-                            >
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/card_image4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/card_title"
-                                android:src="@drawable/pic_1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/card_label"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:contentDescription="@string/card_label"
-                                />
-
-                            <TextView
-                                android:id="@+id/card_title4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/maison_neue_bold"
-                                android:text="@string/card_title"
-                                android:textSize="14sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_image4"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:fontFamily="@font/maison_neue_medium"
-                                android:text="@string/code_id"
-                                android:textSize="12sp"
-                                app:layout_constraintTop_toBottomOf="@+id/card_title4"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginHorizontal="3dp"
-                                />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewLadang"
+            app:layout_constraintTop_toBottomOf="@+id/section3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="10dp"/>
+        <TextView
+            android:id="@+id/noFieldData"
+            app:layout_constraintTop_toBottomOf="@+id/section3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:text="No Field"
+            android:gravity="center"
+            android:paddingVertical="10dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/section4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/section3"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewLadang"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             >
@@ -676,6 +408,7 @@
                 />
 
             <TextView
+                android:id="@+id/articleFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/see_more_navigation"
@@ -687,135 +420,25 @@
                 android:textColor="@color/green"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/article_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/article_activity_header"
-                app:cardElevation="0dp"
-                >
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    >
-
-                    <ImageView
-                        android:id="@+id/article_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/frame_article_image"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:contentDescription="@string/article"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet"
-                        app:layout_constraintStart_toEndOf="@+id/article_image"
-                        app:layout_constraintTop_toTopOf="@+id/article_image"
-                        android:fontFamily="@font/maison_neue_bold"
-                        android:textSize="14sp"
-                        android:layout_marginHorizontal="10dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
-                        app:layout_constraintTop_toBottomOf="@+id/article_title"
-                        app:layout_constraintStart_toStartOf="@id/article_title"
-                        android:fontFamily="@font/maison_neue_book"
-                        android:textSize="12sp"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/article_date"
-                        app:layout_constraintStart_toStartOf="@id/article_title"
-                        app:layout_constraintTop_toBottomOf="@+id/article_desc"
-                        app:layout_constraintBottom_toBottomOf="@+id/article_image"
-                        android:fontFamily="@font/maison_neue_book"
-                        android:textSize="12sp"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <!-- card 2 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/article_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/article_1"
-                app:cardElevation="0dp"
-                >
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    >
-
-                    <ImageView
-                        android:id="@+id/article_image2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/frame_article_image"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:contentDescription="@string/article"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_title2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet"
-                        app:layout_constraintStart_toEndOf="@+id/article_image2"
-                        app:layout_constraintTop_toTopOf="@+id/article_image2"
-                        android:fontFamily="@font/maison_neue_bold"
-                        android:textSize="14sp"
-                        android:layout_marginHorizontal="10dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_desc2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/consectetur_adipiscing_elit_sed_do_eiusmod_tempor"
-                        app:layout_constraintTop_toBottomOf="@+id/article_title2"
-                        app:layout_constraintStart_toStartOf="@id/article_title2"
-                        android:fontFamily="@font/maison_neue_book"
-                        android:textSize="12sp"
-                        />
-
-                    <TextView
-                        android:id="@+id/article_date2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/article_date"
-                        app:layout_constraintStart_toStartOf="@id/article_title2"
-                        app:layout_constraintTop_toBottomOf="@+id/article_desc2"
-                        app:layout_constraintBottom_toBottomOf="@+id/article_image2"
-                        android:fontFamily="@font/maison_neue_book"
-                        android:textSize="12sp"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewArticle"
+            app:layout_constraintTop_toBottomOf="@+id/section4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="10dp"/>
+        <TextView
+            android:id="@+id/noArticleData"
+            app:layout_constraintTop_toBottomOf="@+id/section4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:text="No Articles"
+            android:gravity="center"
+            android:paddingVertical="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

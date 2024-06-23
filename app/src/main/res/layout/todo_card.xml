@@ -1,0 +1,54 @@
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@id/daily_activity_header"
+    android:layout_marginTop="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_lightgreen"
+        android:padding="10dp"
+        >
+
+        <CheckBox
+            android:id="@+id/checklistBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/maison_neue_medium"
+            />
+
+        <TextView
+            android:id="@+id/title_todo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="14dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="@font/maison_neue_bold"
+            android:text="@string/lorem_ipsum_dolor_sit_amet"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/checklistBox"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/time"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/title_todo"
+            app:layout_constraintStart_toStartOf="@+id/checklistBox"
+            app:layout_constraintTop_toTopOf="@+id/title_todo"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

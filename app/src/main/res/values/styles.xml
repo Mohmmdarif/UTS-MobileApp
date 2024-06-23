@@ -5,4 +5,9 @@
         <item name="android:windowMinWidthMajor">90%</item> <!-- Atur lebar dialog -->
         <item name="android:windowMinWidthMinor">90%</item> <!-- Atur lebar dialog -->
     </style>
+
+    <style name="RoundedImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
