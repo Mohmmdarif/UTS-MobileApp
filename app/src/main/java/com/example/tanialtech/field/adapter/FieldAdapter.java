@@ -88,7 +88,7 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
 
     public class FieldViewHolder extends RecyclerView.ViewHolder {
         ImageView imageLadang;
-        TextView namaLadang, kodeLadang, luasLadang, perkiraanMasaTanam;
+        TextView namaLadang, kodeLadang, luasLadang, perkiraanMasaTanam, planting_period;
         public FieldViewHolder(@NonNull View itemView) {
             super(itemView);
             imageLadang = itemView.findViewById(R.id.image_ladang);

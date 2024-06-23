@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.tanialtech.FormTambahKegiatanDialog;
-import com.example.tanialtech.ProfileFragment;
 import com.example.tanialtech.R;
+import com.example.tanialtech.profile.ProfileFragment;
 
 
 public class ActivityFragment extends Fragment {

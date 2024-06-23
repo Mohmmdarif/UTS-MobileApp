@@ -39,16 +39,16 @@ public class RecyclerViewField extends Fragment {
         adapter.setOnItemClickListener(new FieldAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(FieldItem item) {
-                showFormTambahLadangDialog(item);
+                showFormEditLadangDialog(item);
             }
         });
 
         return rootView;
     }
 
-    private void showFormTambahLadangDialog(FieldItem item) {
-        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
-        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
+    private void showFormEditLadangDialog(FieldItem item) {
+        FormEditLadangDialogFragment dialogFragment = FormEditLadangDialogFragment.newInstance(item);
+        dialogFragment.show(getChildFragmentManager(), "FormEditLadangDialogFragment");
     }
 
     public void setFilteredData(ArrayList<FieldItem> filteredData) {

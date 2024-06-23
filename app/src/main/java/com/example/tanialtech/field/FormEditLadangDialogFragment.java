@@ -1,5 +1,6 @@
 package com.example.tanialtech.field;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,19 +8,17 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,17 +31,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.tanialtech.R;
-import com.example.tanialtech.field.VolleyMultipartRequest;
 import com.example.tanialtech.field.data.FieldItem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.CallableStatement;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FormTambahLadangDialogFragment extends DialogFragment {
-
+public class FormEditLadangDialogFragment extends DialogFragment {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final String ARG_FIELD_ITEM = "field_item";
     private EditText inputNamaLadang, inputKodeLadang, inputLuasLadang, inputPerkiraanLadang;
@@ -52,30 +48,29 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
     private FieldItem fieldItem;
     SharedPreferences sharedPreferences;
 
-//    public static FormTambahLadangDialogFragment newInstance(FieldItem item) {
-//        FormTambahLadangDialogFragment fragment = new FormTambahLadangDialogFragment();
-//        Bundle args = new Bundle();
-//        args.putParcelable(ARG_FIELD_ITEM, (Parcelable) item);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public static FormEditLadangDialogFragment newInstance(FieldItem item) {
+        FormEditLadangDialogFragment fragment = new FormEditLadangDialogFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(ARG_FIELD_ITEM, (Parcelable) item);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.RoundedDialogTheme);
-
         if (getArguments() != null) {
             fieldItem = getArguments().getParcelable(ARG_FIELD_ITEM);
         }
         sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_form_tambah_ladang_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_form_edit_ladang_dialog, container, false);
 
         inputNamaLadang = view.findViewById(R.id.inputNamaLadang);
         inputKodeLadang = view.findViewById(R.id.inputKodeLadang);
@@ -87,27 +82,26 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
 
         view.findViewById(R.id.batal).setOnClickListener(v -> {
             dismiss();
-            clearForm();
         });
         view.findViewById(R.id.simpan).setOnClickListener(v -> {
             if (validateForm()) {
-                PostFieldForm();
+                PutFieldForm();
             }
         });
 
-        // mengambil inputan sebelumnya
-//        if (fieldItem != null) {
-//            inputNamaLadang.setText(fieldItem.getNamaLadang());
-//            inputKodeLadang.setText(fieldItem.getKodeLadang());
-//            inputLuasLadang.setText(fieldItem.getLuasLadang());
-//            inputPerkiraanLadang.setText(fieldItem.getPerkiraanMasaTanam());
-//
-//            Glide.with(this)
-//                    .load("https://api-simdoks.simdoks.web.id/" + fieldItem.getImageResource())
-//                    .placeholder(R.drawable.pic_1)
-//                    .error(R.drawable.pic_1)
-//                    .into(fotoLadang);
-//        }
+        if (fieldItem != null) {
+            inputNamaLadang.setText(fieldItem.getNamaLadang());
+            inputKodeLadang.setText(fieldItem.getKodeLadang());
+            inputLuasLadang.setText(fieldItem.getLuasLadang());
+            inputPerkiraanLadang.setText(fieldItem.getPlanting_period_convert());
+
+
+            Glide.with(this)
+                    .load("https://api-simdoks.simdoks.web.id/" + fieldItem.getImageResource())
+                    .placeholder(R.drawable.pic_1)
+                    .error(R.drawable.pic_1)
+                    .into(fotoLadang);
+        }
 
         return view;
     }
@@ -135,22 +129,8 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
             valid = false;
         }
 
-        if (bitmap == null) {
-            Toast.makeText(getActivity(), "Foto Ladang harus dipilih", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }
-
+        Log.d("Validation", "Form validation result: " + valid);
         return valid;
-    }
-
-
-    private void clearForm() {
-        inputNamaLadang.setText("");
-        inputKodeLadang.setText("");
-        inputLuasLadang.setText("");
-        inputPerkiraanLadang.setText("");
-        fotoLadang.setImageResource(R.drawable.plus1); // Gambar default
-        bitmap = null;
     }
 
     private void chooseImage() {
@@ -174,26 +154,34 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         }
     }
 
-    private void PostFieldForm() {
+    private void PutFieldForm() {
         int userId = sharedPreferences.getInt("user_id", -1); // -1 is the default value if not found
 
-        String url = "https://api-simdoks.simdoks.web.id/field"; // URL Api
+        String url = "https://api-simdoks.simdoks.web.id/field/" + fieldItem.getId(); // URL API dengan ID field
 
-        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.PUT, url,
                 new Response.Listener<NetworkResponse>() {
                     @Override
                     public void onResponse(NetworkResponse response) {
+                        String responseString = new String(response.data);
+                        Log.d("VolleyResponse", responseString);
                         // Handle response dari server
-                        Toast.makeText(getActivity(), "Data berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
-                        clearForm();
+                        Toast.makeText(getActivity(), "Data berhasil diperbarui!", Toast.LENGTH_SHORT).show();
                         dismiss();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        NetworkResponse networkResponse = error.networkResponse;
+                        if (networkResponse != null && networkResponse.data != null) {
+                            String errorResponse = new String(networkResponse.data);
+                            Log.e("VolleyError", errorResponse);
+                        } else {
+                            Log.e("VolleyError", "Unknown error occurred: " + error.getMessage());
+                        }
                         // Handle error
-                        Toast.makeText(getActivity(), "Gagal menambahkan data!: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Gagal memperbarui data!: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         ) {
@@ -205,6 +193,7 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
                 params.put("code", inputKodeLadang.getText().toString().trim());
                 params.put("size", inputLuasLadang.getText().toString().trim());
                 params.put("planting_period", inputPerkiraanLadang.getText().toString().trim());
+                Log.d("VolleyParams", params.toString());
                 return params;
             }
 
@@ -212,7 +201,10 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
             protected Map<String, DataPart> getByteData() throws AuthFailureError {
                 Map<String, DataPart> params = new HashMap<>();
                 if (bitmap != null) {
+                    Log.d("VolleyParams", "Image included in request");
                     params.put("img", new DataPart("ladang_image.jpg", getFileDataFromDrawable(bitmap)));
+                } else {
+                    Log.d("VolleyParams", "No image included in request");
                 }
                 return params;
             }
@@ -221,13 +213,9 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         Volley.newRequestQueue(getActivity()).add(multipartRequest);
     }
 
-
-
-
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-
 }

@@ -10,21 +10,27 @@ public class FieldItem implements Parcelable {
     private String kodeLadang;
     private String luasLadang;
     private String perkiraanMasaTanam;
+    private String planting_period_convert;
 
-    public FieldItem(String imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam) {
+
+    public FieldItem(int id, String imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam, String plantingPeriodConvert) {
+        this.id = id;
         this.imageResource = imageResource;
         this.namaLadang = namaLadang;
         this.kodeLadang = kodeLadang;
         this.luasLadang = luasLadang;
         this.perkiraanMasaTanam = perkiraanMasaTanam;
+        this.planting_period_convert = plantingPeriodConvert;
     }
 
     protected FieldItem(Parcel in) {
+        id = in.readInt();
         namaLadang = in.readString();
         kodeLadang = in.readString();
         luasLadang = in.readString();
         perkiraanMasaTanam = in.readString();
         imageResource = in.readString();
+        planting_period_convert = in.readString();
     }
 
     public static final Creator<FieldItem> CREATOR = new Creator<FieldItem>() {
@@ -38,6 +44,10 @@ public class FieldItem implements Parcelable {
             return new FieldItem[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
 
     public String getImageResource() {
         return imageResource;
@@ -79,6 +89,14 @@ public class FieldItem implements Parcelable {
         this.perkiraanMasaTanam = perkiraanMasaTanam;
     }
 
+    public String getPlanting_period_convert() {
+        return planting_period_convert;
+    }
+
+    public void setPlanting_period_convert(String planting_period_convert) {
+        this.planting_period_convert = planting_period_convert;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -86,11 +104,13 @@ public class FieldItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(namaLadang);
         dest.writeString(kodeLadang);
         dest.writeString(luasLadang);
         dest.writeString(perkiraanMasaTanam);
         dest.writeString(imageResource);
+        dest.writeString(planting_period_convert);
     }
 
     @Override

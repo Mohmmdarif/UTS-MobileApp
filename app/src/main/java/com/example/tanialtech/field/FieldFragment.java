@@ -1,7 +1,10 @@
 package com.example.tanialtech.field;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,9 +26,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.tanialtech.ProfileFragment;
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.data.FieldItem;
+import com.example.tanialtech.profile.ProfileFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,12 +41,20 @@ import java.util.Map;
 
 public class FieldFragment extends Fragment {
 
-    private String url = "https://api-simdoks.simdoks.web.id/fields";
     private ArrayList<FieldItem> fieldItems = new ArrayList<>();
     private RecyclerViewField recyclerViewField;
+    SharedPreferences sharedPreferences;
+
 
     public FieldFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -117,16 +128,19 @@ public class FieldFragment extends Fragment {
                     String name = jsonObject.getString("name");
                     String code = jsonObject.getString("code");
                     int size = jsonObject.getInt("size");
+                    String planting_period = jsonObject.getString("planting_period");
                     String harvest_time = jsonObject.getString("harvest_time");
                     String img_url = jsonObject.getString("img_url");
 
                     // Buat FieldItem baru dan tambahkan ke daftar
                     fieldItems.add(new FieldItem(
+                            id,
                             img_url,
                             name,
                             code,
                             String.valueOf(size),
-                            harvest_time
+                            harvest_time,
+                            planting_period
                     ));
                 } catch (JSONException e) {
                     Log.e("Volley", "JSON parsing error: " + e.getMessage());
@@ -143,6 +157,11 @@ public class FieldFragment extends Fragment {
     }
 
     private void getData() {
+        int userId = sharedPreferences.getInt("user_id", -1); // -1 is the default value if not found
+        String accessToken = sharedPreferences.getString("accessToken", "");
+
+        String url = "https://api-simdoks.simdoks.web.id/fields/user/" + userId;
+
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -172,10 +191,10 @@ public class FieldFragment extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void showEditDialog(FieldItem item) {
-        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
-        dialogFragment.show(getChildFragmentManager(), "FormEditLadangDialogFragment");
-    }
+//    private void showEditDialog(FieldItem item) {
+//        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
+//        dialogFragment.show(getChildFragmentManager(), "FormEditLadangDialogFragment");
+//    }
 
     private void searchField(int user_id, String query) {
         ArrayList<FieldItem> filteredList = new ArrayList<>();
