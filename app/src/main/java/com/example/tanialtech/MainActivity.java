@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
+import com.example.tanialtech.Dashboard.DashboardFragment;
 import com.example.tanialtech.article.ArticleFragment;
 import com.example.tanialtech.field.FieldFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

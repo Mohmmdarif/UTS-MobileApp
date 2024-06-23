@@ -410,7 +410,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/temperature"
+                    android:id="@+id/temperature_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="26dp"
@@ -421,16 +421,32 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="26dp"
-                    android:contentDescription="@string/cloud_status"
-                    android:src="@drawable/cloudy"
+                    android:layout_marginEnd="28dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
+                    <ImageView
+                        android:id="@+id/img_weather"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/cloud_status"
+                        android:src="@drawable/cerah" />
+
+                    <TextView
+                        android:id="@+id/deskripsiCuaca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Berawan"
+                        android:textSize="11sp" />
+                </LinearLayout>
                 <View
                     android:id="@+id/divider"
                     android:layout_width="match_parent"
@@ -448,110 +464,114 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="50dp">
 
-                <ImageView
+                <LinearLayout
                     android:id="@+id/kelembapan"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:contentDescription="@string/label_kelembapan"
-                    android:src="@drawable/kelembapan_logo"
-                    app:layout_constraintEnd_toStartOf="@+id/angin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toStartOf="@+id/angin">
 
-                <ImageView
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/kelembapan_logo"
+                        android:contentDescription="@string/label_kelembapan"
+                        />
+
+                    <TextView
+                        android:id="@+id/label_kelembapan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_kelembapan"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+                    <TextView
+                        android:id="@+id/status_kelembapan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_kelembapan"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/angin"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:contentDescription="@string/label_angin"
-                    android:src="@drawable/angin"
-                    app:layout_constraintEnd_toStartOf="@+id/tekanan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/kelembapan"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toStartOf="@+id/tekanan">
 
-                <ImageView
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/angin"
+                        android:contentDescription="@string/label_angin"
+                        />
+
+                    <TextView
+                        android:id="@+id/label_angin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_angin"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+                    <TextView
+                        android:id="@+id/status_angin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_angin"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/tekanan"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:contentDescription="@string/label_tekanan"
-                    android:src="@drawable/tekanan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/angin"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/angin">
 
-                <TextView
-                    android:id="@+id/label_kelembapan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="18dp"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:text="@string/label_kelembapan"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/label_angin"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/kelembapan" />
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/tekanan"
+                        android:contentDescription="@string/label_angin"
+                        />
 
-                <TextView
-                    android:id="@+id/label_angin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="25dp"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:text="@string/label_angin"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/label_tekanan"
-                    app:layout_constraintStart_toEndOf="@+id/label_kelembapan"
-                    app:layout_constraintTop_toBottomOf="@+id/angin" />
+                    <TextView
+                        android:id="@+id/label_tekanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_tekanan"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/maison_neue_book"
+                        />
+                    <TextView
+                        android:id="@+id/status_tekanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/informasi_tekanan"
 
-                <TextView
-                    android:id="@+id/label_tekanan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/maison_neue_book"
-                    android:text="@string/label_tekanan"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/label_angin"
-                    app:layout_constraintTop_toBottomOf="@+id/tekanan" />
-
-                <TextView
-                    android:id="@+id/status_kelembapan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/maison_neue_bold"
-                    android:text="@string/informasi_kelembapan"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/status_angin"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_kelembapan" />
-
-                <TextView
-                    android:id="@+id/status_angin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:fontFamily="@font/maison_neue_bold"
-                    android:text="@string/informasi_angin"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/status_tekanan"
-                    app:layout_constraintStart_toEndOf="@+id/status_kelembapan"
-                    app:layout_constraintTop_toBottomOf="@+id/label_angin" />
-
-                <TextView
-                    android:id="@+id/status_tekanan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/maison_neue_bold"
-                    android:text="@string/informasi_tekanan"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/status_angin"
-                    app:layout_constraintTop_toBottomOf="@+id/label_tekanan" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/maison_neue_bold"
+                        />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
