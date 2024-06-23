@@ -10,20 +10,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.data.FieldItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHolder> {
 
     private List<FieldItem> ladangList;
-    private Context mContext;
+//    private Context mContext;
+    private OnItemClickListener onItemClickListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(FieldItem item);
+    }
 
     public FieldAdapter(Context context, List<FieldItem> ladangList){
-        this.mContext = context;
+//        this.mContext = context;
         this.ladangList = ladangList;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
 
@@ -34,14 +47,33 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
         return new FieldViewHolder(view);
     }
 
+    private String formatDate(String inputDateString) {
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.ENGLISH);
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
+        try {
+            Date date = inputDateFormat.parse(inputDateString);
+            return outputDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return inputDateString; // Return the original string in case of error
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull FieldViewHolder holder, int position) {
         FieldItem field = ladangList.get(position);
-        holder.imageLadang.setImageResource(field.getImageResource());
+        holder.bind(field, onItemClickListener);
+
         holder.namaLadang.setText(field.getNamaLadang());
         holder.kodeLadang.setText(field.getKodeLadang());
         holder.luasLadang.setText(field.getLuasLadang());
-        holder.perkiraanMasaTanam.setText(field.getPerkiraanMasaTanam());
+        holder.perkiraanMasaTanam.setText(formatDate(field.getPerkiraanMasaTanam()));
+
+        Glide.with(holder.imageLadang.getContext())
+                .load("https://api-simdoks.simdoks.web.id/" + field.getImageResource())
+                .placeholder(R.drawable.pic_1)
+                .error(R.drawable.pic_1)
+                .into(holder.imageLadang);
     }
 
     @Override
@@ -49,6 +81,10 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
         return ladangList.size();
     }
 
+    public void setFieldData(List<FieldItem> newLadangList) {
+        this.ladangList = newLadangList;
+        notifyDataSetChanged();
+    }
 
     public class FieldViewHolder extends RecyclerView.ViewHolder {
         ImageView imageLadang;
@@ -60,6 +96,25 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
             kodeLadang = itemView.findViewById(R.id.kode_ladang);
             luasLadang = itemView.findViewById(R.id.luas_ladang);
             perkiraanMasaTanam = itemView.findViewById(R.id.perkiraan_masa_tanam);
+        }
+
+        public void bind(FieldItem item, OnItemClickListener listener) {
+            namaLadang.setText(item.getNamaLadang());
+            kodeLadang.setText(item.getKodeLadang());
+            luasLadang.setText(item.getLuasLadang());
+            perkiraanMasaTanam.setText(item.getPerkiraanMasaTanam());
+
+            Glide.with(itemView.getContext())
+                    .load("https://api-simdoks.simdoks.web.id/" + item.getImageResource())
+                    .placeholder(R.drawable.pic_1)
+                    .error(R.drawable.pic_1)
+                    .into(imageLadang);
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

@@ -3,17 +3,20 @@ package com.example.tanialtech;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.example.tanialtech.field.FormTambahLadangDialogFragment;
+import com.example.tanialtech.FormTambahKegiatanDialog;
+import com.example.tanialtech.ProfileFragment;
+import com.example.tanialtech.R;
 
 
 public class ActivityFragment extends Fragment {
-
 
     public ActivityFragment() {
         // Required empty public constructor
@@ -34,8 +37,22 @@ public class ActivityFragment extends Fragment {
             }
         });
 
+
+        // Intent to profile screen
+        ImageView profile = view.findViewById(R.id.profile_icon);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new ProfileFragment());
+                transaction.addToBackStack(null);  // Tambahkan ke back stack agar bisa kembali ke fragment sebelumnya
+                transaction.commit();
+            }
+        });
+
         return view;
     }
+
 
     private void showFormTambahKegiatanDialog() {
         FormTambahKegiatanDialog dialogFragment = new FormTambahKegiatanDialog();
