@@ -157,7 +157,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/maison_neue_medium"
                     android:layout_marginStart="30dp"
-                    android:text="lupa kata sandi?"
+                    android:text="Lupa kata sandi?"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"

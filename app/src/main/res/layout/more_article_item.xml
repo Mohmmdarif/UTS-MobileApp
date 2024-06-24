@@ -25,12 +25,13 @@
 
             <ImageView
                 android:id="@+id/more_article_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/frame_article_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:contentDescription="@string/article"
+                android:scaleType="centerCrop"
                 />
 
             <TextView
@@ -42,6 +43,8 @@
                 app:layout_constraintTop_toTopOf="@+id/more_article_image"
                 android:fontFamily="@font/maison_neue_bold"
                 android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_marginHorizontal="10dp"
                 />
 
@@ -53,6 +56,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/more_article_title"
                 app:layout_constraintStart_toStartOf="@id/more_article_title"
                 android:fontFamily="@font/maison_neue_book"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textSize="12sp"
                 />
 

@@ -16,12 +16,13 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:persistent="false"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@drawable/logo_tanial"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.TANIALTECH"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
         <activity
             android:name=".SplashScreen"
             android:exported="true">

@@ -211,12 +211,12 @@ public class DashboardFragment extends Fragment {
                 }
             }
         };
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayWeatherFragment();
-            }
-        });
+//        cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                displayWeatherFragment();
+//            }
+//        });
 
         return view;
     }
@@ -585,32 +585,32 @@ public class DashboardFragment extends Fragment {
         }
     }
 
-    private void displayWeatherFragment() {
-        FragmentManager fragmentManager = getChildFragmentManager();
-
-        Fragment previousFragment = fragmentManager.findFragmentById(R.id.fragment_container);
-        if (previousFragment != null) {
-            fragmentManager.beginTransaction().remove(previousFragment).commitNow();
-        }
-
-        WeatherFragment weatherFragment = new WeatherFragment();
-
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.fragment_container, weatherFragment);
-        fragmentTransaction.addToBackStack(null);
-
-        fragmentTransaction.commit();
-
-        View previousView = getView();
-        if (previousView != null) {
-            CardView cardView = previousView.findViewById(R.id.card);
-            if (cardView != null) {
-                ViewGroup parentView = (ViewGroup) cardView.getParent();
-                parentView.removeView(cardView);
-            }
-        }
-    }
+//    private void displayWeatherFragment() {
+//        FragmentManager fragmentManager = getChildFragmentManager();
+//
+//        Fragment previousFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+//        if (previousFragment != null) {
+//            fragmentManager.beginTransaction().remove(previousFragment).commitNow();
+//        }
+//
+//        WeatherFragment weatherFragment = new WeatherFragment();
+//
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//        fragmentTransaction.replace(R.id.fragment_container, weatherFragment);
+//        fragmentTransaction.addToBackStack(null);
+//
+//        fragmentTransaction.commit();
+//
+//        View previousView = getView();
+//        if (previousView != null) {
+//            CardView cardView = previousView.findViewById(R.id.card);
+//            if (cardView != null) {
+//                ViewGroup parentView = (ViewGroup) cardView.getParent();
+//                parentView.removeView(cardView);
+//            }
+//        }
+//    }
 
         private void displayProfileFragment(){
             ConstraintLayout constraintLayout = requireView().findViewById(R.id.fragment_container);
