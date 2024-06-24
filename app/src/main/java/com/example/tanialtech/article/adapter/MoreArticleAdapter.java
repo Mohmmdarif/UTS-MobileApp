@@ -9,10 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tanialtech.R;
+import com.example.tanialtech.article.data.ArticleItem;
 import com.example.tanialtech.article.data.MoreArticle;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MoreArticleAdapter extends RecyclerView.Adapter<MoreArticleAdapter.ArticleViewHolder> {
 
@@ -31,6 +37,12 @@ public class MoreArticleAdapter extends RecyclerView.Adapter<MoreArticleAdapter.
         this.onItemClickListener = listener;
     }
 
+    public void updateData(List<MoreArticle> newArticleList) {
+        moreArticleList.clear();
+        moreArticleList.addAll(newArticleList);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,16 +54,33 @@ public class MoreArticleAdapter extends RecyclerView.Adapter<MoreArticleAdapter.
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
         MoreArticle article = moreArticleList.get(position);
-        holder.moreArticleImage.setImageResource(article.getImageResId());
         holder.moreArticleTitle.setText(article.getTitle());
         holder.moreArticleDesc.setText(article.getDesc());
-        holder.moreArticleDate.setText(article.getDate());
+        holder.moreArticleDate.setText(formatDate(article.getDate()));
+
+        Glide.with(holder.moreArticleImage.getContext())
+                .load("https://api-simdoks.simdoks.web.id/" + article.getImageResId())
+                .placeholder(R.drawable.pic_1)
+                .error(R.drawable.pic_1)
+                .into(holder.moreArticleImage);
 
         holder.itemView.setOnClickListener(v -> {
-            if(onItemClickListener != null) {
+            if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(article);
             }
         });
+    }
+
+    private String formatDate(String inputDateString) {
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.ENGLISH);
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
+        try {
+            Date date = inputDateFormat.parse(inputDateString);
+            return outputDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return inputDateString; // Return the original string in case of error
+        }
     }
 
     @Override

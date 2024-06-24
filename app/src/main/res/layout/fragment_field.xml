@@ -138,6 +138,7 @@
             android:layout_alignParentEnd="true"
             >
             <ImageView
+                android:id="@+id/delete_button"
                 android:layout_width="20dp"
                 android:layout_height="30dp"
                 android:src="@drawable/trash"

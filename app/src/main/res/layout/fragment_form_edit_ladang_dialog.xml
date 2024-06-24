@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="316dp"
+    android:layout_height="440dp"
+    android:background="@drawable/rounded_layout"
+    tools:context=".field.FormEditLadangDialogFragment">
+
+    <TextView
+        android:id="@+id/judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Edit Ladang"
+        android:fontFamily="@font/maison_neue_bold"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:id="@+id/container_nama_kode_ladang"
+        android:layout_width="280dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="22dp"
+        android:layout_below="@id/judul"
+        >
+        <TextView
+            android:id="@+id/tvNamaLadang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Ladang"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            />
+
+        <EditText
+            android:id="@+id/inputNamaLadang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <TextView
+            android:id="@+id/tvKodeLadang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kode Ladang"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            />
+
+        <EditText
+            android:id="@+id/inputKodeLadang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/container_luas_ladang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container_nama_kode_ladang"
+
+        android:layout_marginHorizontal="23dp">
+
+        <!-- TextView untuk label Luas Ladang -->
+        <TextView
+            android:id="@+id/tvLuasLadang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luas Ladang"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp" />
+
+        <!-- EditText untuk input Luas Ladang -->
+        <EditText
+            android:id="@+id/inputLuasLadang"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLuasLadang"
+            android:fontFamily="@font/maison_neue_medium"
+            android:inputType="numberDecimal"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <!-- TextView untuk satuan "Ha" -->
+        <TextView
+            android:id="@+id/tvHa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ha"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            android:layout_marginTop="17dp"
+            android:layout_below="@id/tvLuasLadang"
+            android:layout_alignBottom="@id/inputLuasLadang"
+            android:layout_toEndOf="@id/inputLuasLadang"/>
+        <TextView
+            android:id="@+id/tvPerkiraanLadang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perkiraan Masa Tanam"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/inputLuasLadang"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp" />
+
+        <!-- EditText untuk input Luas Ladang -->
+        <EditText
+            android:id="@+id/inputPerkiraanLadang"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPerkiraanLadang"
+            android:fontFamily="@font/maison_neue_medium"
+            android:inputType="number"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <!-- TextView untuk satuan "Ha" -->
+        <TextView
+            android:id="@+id/tvHari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hari"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp"
+            android:layout_marginTop="17dp"
+            android:layout_below="@id/tvPerkiraanLadang"
+            android:layout_alignBottom="@id/inputPerkiraanLadang"
+            android:layout_toEndOf="@id/inputPerkiraanLadang"/>
+
+        <TextView
+            android:id="@+id/tvFotoLadang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto Ladang"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/inputPerkiraanLadang"
+            android:fontFamily="@font/maison_neue_medium"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/tombolTambah"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/tvFotoLadang"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/plus1"
+            android:background="@drawable/tombol_tambah_ladang"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/container_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container_luas_ladang"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/batal"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:hint="Batal"
+            android:textColorHint="@color/text_color_selector"
+            android:textSize="12sp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="5dp"
+            android:paddingVertical="1dp"
+            android:layout_alignParentStart="true"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/simpan"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:hint="Simpan"
+            android:layout_weight="1"
+            android:textColorHint="@color/text_color_selector"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/batal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="5dp"
+            android:paddingVertical="1dp"
+            android:layout_alignParentEnd="true"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+</RelativeLayout>

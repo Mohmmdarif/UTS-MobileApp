@@ -1,5 +1,6 @@
 package com.example.tanialtech.field;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,19 +10,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.tanialtech.R;
 import com.example.tanialtech.field.adapter.FieldAdapter;
 import com.example.tanialtech.field.data.FieldItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecyclerViewField extends Fragment {
     private RecyclerView rvField;
+    private FieldAdapter adapter;
     private ArrayList<FieldItem> fieldItems = new ArrayList<>();
 
-    private FieldAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,16 +43,16 @@ public class RecyclerViewField extends Fragment {
         adapter.setOnItemClickListener(new FieldAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(FieldItem item) {
-                showFormTambahLadangDialog(item);
+                showFormEditLadangDialog(item);
             }
         });
 
         return rootView;
     }
 
-    private void showFormTambahLadangDialog(FieldItem item) {
-        FormTambahLadangDialogFragment dialogFragment = FormTambahLadangDialogFragment.newInstance(item);
-        dialogFragment.show(getChildFragmentManager(), "FormTambahLadangDialogFragment");
+    private void showFormEditLadangDialog(FieldItem item) {
+        FormEditLadangDialogFragment dialogFragment = FormEditLadangDialogFragment.newInstance(item);
+        dialogFragment.show(getChildFragmentManager(), "FormEditLadangDialogFragment");
     }
 
     public void setFilteredData(ArrayList<FieldItem> filteredData) {
@@ -62,5 +66,14 @@ public class RecyclerViewField extends Fragment {
         fieldItems.addAll(data);
         // Memberi tahu adapter bahwa dataset telah berubah
         adapter.notifyDataSetChanged();
+    }
+
+
+    public List<FieldItem> getSelectedItems() {
+        return adapter.getSelectedItems();
+    }
+
+    public void deleteSelectedItems() {
+        adapter.removeSelectedItems();
     }
 }

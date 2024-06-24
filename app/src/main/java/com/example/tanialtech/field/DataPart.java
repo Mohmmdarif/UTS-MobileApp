@@ -37,6 +37,7 @@ public class DataPart {
             while ((bytesRead = fileInputStream.read(buffer)) != -1) {
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
             }
+            fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
