@@ -7,4 +7,5 @@
     <color name="devider_article_color">#F2F2F2</color>
     <color name="gray">#3F3F3F</color>
     <color name="lightgreen">#EEF7EE</color>
+    <color name="selected_item">#FFDDDDDD</color>
 </resources>

@@ -12,8 +12,10 @@ public class FieldItem implements Parcelable {
     private String perkiraanMasaTanam;
     private String planting_period_convert;
 
+    private boolean isSelected;
 
-    public FieldItem(int id, String imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam, String plantingPeriodConvert) {
+
+    public FieldItem(int id, String imageResource, String namaLadang, String kodeLadang, String luasLadang, String perkiraanMasaTanam, String plantingPeriodConvert, boolean isSelected) {
         this.id = id;
         this.imageResource = imageResource;
         this.namaLadang = namaLadang;
@@ -21,6 +23,7 @@ public class FieldItem implements Parcelable {
         this.luasLadang = luasLadang;
         this.perkiraanMasaTanam = perkiraanMasaTanam;
         this.planting_period_convert = plantingPeriodConvert;
+        this.isSelected = isSelected;
     }
 
     protected FieldItem(Parcel in) {
@@ -95,6 +98,14 @@ public class FieldItem implements Parcelable {
 
     public void setPlanting_period_convert(String planting_period_convert) {
         this.planting_period_convert = planting_period_convert;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     @Override

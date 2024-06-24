@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tanialtech.DetailArticleFragment;
 import com.example.tanialtech.R;
 import com.example.tanialtech.article.adapter.ArticleAdapter;
 import com.example.tanialtech.article.adapter.MoreArticleAdapter;

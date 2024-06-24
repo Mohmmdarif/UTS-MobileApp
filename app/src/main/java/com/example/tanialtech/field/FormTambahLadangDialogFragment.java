@@ -52,13 +52,6 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
     private FieldItem fieldItem;
     SharedPreferences sharedPreferences;
 
-//    public static FormTambahLadangDialogFragment newInstance(FieldItem item) {
-//        FormTambahLadangDialogFragment fragment = new FormTambahLadangDialogFragment();
-//        Bundle args = new Bundle();
-//        args.putParcelable(ARG_FIELD_ITEM, (Parcelable) item);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,20 +87,6 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
                 PostFieldForm();
             }
         });
-
-        // mengambil inputan sebelumnya
-//        if (fieldItem != null) {
-//            inputNamaLadang.setText(fieldItem.getNamaLadang());
-//            inputKodeLadang.setText(fieldItem.getKodeLadang());
-//            inputLuasLadang.setText(fieldItem.getLuasLadang());
-//            inputPerkiraanLadang.setText(fieldItem.getPerkiraanMasaTanam());
-//
-//            Glide.with(this)
-//                    .load("https://api-simdoks.simdoks.web.id/" + fieldItem.getImageResource())
-//                    .placeholder(R.drawable.pic_1)
-//                    .error(R.drawable.pic_1)
-//                    .into(fotoLadang);
-//        }
 
         return view;
     }

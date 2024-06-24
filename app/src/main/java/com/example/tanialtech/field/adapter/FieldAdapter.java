@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +18,7 @@ import com.example.tanialtech.field.data.FieldItem;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -23,22 +26,22 @@ import java.util.Locale;
 public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHolder> {
 
     private List<FieldItem> ladangList;
-//    private Context mContext;
+    private Context mContext;
+    private List<FieldItem> selectedItems = new ArrayList<>(); // List to keep track of selected items
     private OnItemClickListener onItemClickListener;
+
+    public FieldAdapter(Context context, List<FieldItem> ladangList){
+        this.mContext = context;
+        this.ladangList = ladangList;
+    }
 
     public interface OnItemClickListener {
         void onItemClick(FieldItem item);
     }
 
-    public FieldAdapter(Context context, List<FieldItem> ladangList){
-//        this.mContext = context;
-        this.ladangList = ladangList;
-    }
-
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
-
 
     @NonNull
     @Override
@@ -74,11 +77,37 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
                 .placeholder(R.drawable.pic_1)
                 .error(R.drawable.pic_1)
                 .into(holder.imageLadang);
+
+
+        holder.checkbox.setChecked(selectedItems.contains(field));
+        holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedItems.add(field);
+            } else {
+                selectedItems.remove(field);
+            }
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(field);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return ladangList.size();
+    }
+
+    public List<FieldItem> getSelectedItems() {
+        return selectedItems;
+    }
+
+    public void removeSelectedItems() {
+        ladangList.removeAll(selectedItems);
+        selectedItems.clear();
+        notifyDataSetChanged();
     }
 
     public void setFieldData(List<FieldItem> newLadangList) {
@@ -89,6 +118,7 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
     public class FieldViewHolder extends RecyclerView.ViewHolder {
         ImageView imageLadang;
         TextView namaLadang, kodeLadang, luasLadang, perkiraanMasaTanam, planting_period;
+        CheckBox checkbox;
         public FieldViewHolder(@NonNull View itemView) {
             super(itemView);
             imageLadang = itemView.findViewById(R.id.image_ladang);
@@ -96,6 +126,7 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
             kodeLadang = itemView.findViewById(R.id.kode_ladang);
             luasLadang = itemView.findViewById(R.id.luas_ladang);
             perkiraanMasaTanam = itemView.findViewById(R.id.perkiraan_masa_tanam);
+            checkbox = itemView.findViewById(R.id.checkbox);
         }
 
         public void bind(FieldItem item, OnItemClickListener listener) {
@@ -116,5 +147,6 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.FieldViewHol
                 }
             });
         }
+
     }
 }
