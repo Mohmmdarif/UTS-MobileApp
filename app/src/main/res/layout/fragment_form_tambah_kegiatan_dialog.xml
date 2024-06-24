@@ -4,7 +4,7 @@
     android:layout_width="316dp"
     android:layout_height="349dp"
     android:background="@drawable/rounded_layout"
-    tools:context=".FormTambahKegiatanDialog">
+    tools:context=".activity.FormTambahKegiatanDialog">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

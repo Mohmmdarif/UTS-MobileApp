@@ -1,4 +1,4 @@
-package com.example.tanialtech;
+package com.example.tanialtech.activity;
 
 import android.os.Bundle;
 
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.tanialtech.R;
 
 
 public class FormTambahKegiatanDialog extends DialogFragment {
@@ -20,7 +22,7 @@ public class FormTambahKegiatanDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL,R.style.RoundedDialogTheme);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.RoundedDialogTheme);
     }
 
     @Override
