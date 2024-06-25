@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_selector"
-        android:hint="Daftar"
+        android:hint="Mulai"
         android:textColorHint="@color/green"
         tools:ignore="TouchTargetSizeCheck" />
 

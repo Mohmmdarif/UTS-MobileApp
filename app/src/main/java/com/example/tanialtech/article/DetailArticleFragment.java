@@ -1,16 +1,16 @@
 package com.example.tanialtech.article;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +28,8 @@ import org.json.JSONObject;
 public class DetailArticleFragment extends Fragment {
     private static final String ARG_ARTICLE_ID = "article_id";
     private int articleId;
+
+    ImageView arrowBack;
     public DetailArticleFragment() {
         // Required empty public constructor
     }
@@ -53,10 +55,37 @@ public class DetailArticleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detail_article, container, false);
+        arrowBack = view.findViewById(R.id.arrow_back);
 
         fetchArticleDetails(articleId, view);
 
+        arrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayArticleFragment();
+            }
+        });
+
         return view;
+    }
+
+    private void displayArticleFragment(){
+        ConstraintLayout constraintLayout = requireView().findViewById(R.id.article_page);
+
+        // Hapus semua tampilan dari ConstraintLayout
+        constraintLayout.removeAllViews();
+
+        // Buat instance dari FieldFragment
+        ArticleFragment articleFragment1 = new ArticleFragment();
+
+        // Dapatkan FragmentManager
+        FragmentManager fragmentManager = getChildFragmentManager();
+
+        // Lakukan transaksi fragment
+        fragmentManager.beginTransaction()
+                .replace(constraintLayout.getId(), articleFragment1)
+                .addToBackStack(null) // Ini untuk menambahkan ke back stack
+                .commit();
     }
 
     private void fetchArticleDetails(int articleId, View view) {
