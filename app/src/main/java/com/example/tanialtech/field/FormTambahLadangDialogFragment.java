@@ -1,26 +1,22 @@
 package com.example.tanialtech.field;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -28,9 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.example.tanialtech.R;
-import com.example.tanialtech.field.VolleyMultipartRequest;
 import com.example.tanialtech.field.data.FieldItem;
 
 import java.io.ByteArrayOutputStream;
@@ -47,14 +41,8 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
     private Uri imageUri;
     private Bitmap bitmap;
     private FieldItem fieldItem;
+    SharedPreferences sharedPreferences;
 
-    public static FormTambahLadangDialogFragment newInstance(FieldItem item) {
-        FormTambahLadangDialogFragment fragment = new FormTambahLadangDialogFragment();
-        Bundle args = new Bundle();
-        args.putParcelable(ARG_FIELD_ITEM, (Parcelable) item);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +52,8 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         if (getArguments() != null) {
             fieldItem = getArguments().getParcelable(ARG_FIELD_ITEM);
         }
+        sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+
     }
 
     @Override
@@ -78,6 +68,7 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         fotoLadang = view.findViewById(R.id.tombolTambah);
         fotoLadang.setOnClickListener(v -> chooseImage());
 
+
         view.findViewById(R.id.batal).setOnClickListener(v -> {
             dismiss();
             clearForm();
@@ -87,20 +78,6 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
                 PostFieldForm();
             }
         });
-
-        // mengambil inputan sebelumnya
-        if (fieldItem != null) {
-            inputNamaLadang.setText(fieldItem.getNamaLadang());
-            inputKodeLadang.setText(fieldItem.getKodeLadang());
-            inputLuasLadang.setText(fieldItem.getLuasLadang());
-            inputPerkiraanLadang.setText(fieldItem.getPerkiraanMasaTanam());
-
-            Glide.with(this)
-                    .load("https://api-simdoks.simdoks.web.id/" + fieldItem.getImageResource())
-                    .placeholder(R.drawable.pic_1)
-                    .error(R.drawable.pic_1)
-                    .into(fotoLadang);
-        }
 
         return view;
     }
@@ -168,6 +145,8 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
     }
 
     private void PostFieldForm() {
+        int userId = sharedPreferences.getInt("user_id", -1); // -1 is the default value if not found
+
         String url = "https://api-simdoks.simdoks.web.id/field"; // URL Api
 
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
@@ -191,7 +170,7 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("user_id", String.valueOf(1));
+                params.put("user_id", String.valueOf(userId));
                 params.put("name", inputNamaLadang.getText().toString().trim());
                 params.put("code", inputKodeLadang.getText().toString().trim());
                 params.put("size", inputLuasLadang.getText().toString().trim());
@@ -212,50 +191,7 @@ public class FormTambahLadangDialogFragment extends DialogFragment {
         Volley.newRequestQueue(getActivity()).add(multipartRequest);
     }
 
-    private void PutFieldForm() {
-        String url = "https://api-simdoks.simdoks.web.id/field/" + fieldItem.getId(); // URL API dengan ID field
 
-        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.PUT, url,
-                new Response.Listener<NetworkResponse>() {
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-                        // Handle response dari server
-                        Toast.makeText(getActivity(), "Data berhasil diperbarui!", Toast.LENGTH_SHORT).show();
-                        clearForm();
-                        dismiss();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error
-                        Toast.makeText(getActivity(), "Gagal memperbarui data!: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("user_id", String.valueOf(1));
-                params.put("name", inputNamaLadang.getText().toString().trim());
-                params.put("code", inputKodeLadang.getText().toString().trim());
-                params.put("size", inputLuasLadang.getText().toString().trim());
-                params.put("planting_period", inputPerkiraanLadang.getText().toString().trim());
-                return params;
-            }
-
-            @Override
-            protected Map<String, DataPart> getByteData() throws AuthFailureError {
-                Map<String, DataPart> params = new HashMap<>();
-                if (bitmap != null) {
-                    params.put("img", new DataPart("ladang_image.jpg", getFileDataFromDrawable(bitmap)));
-                }
-                return params;
-            }
-        };
-
-        Volley.newRequestQueue(getActivity()).add(multipartRequest);
-    }
 
 
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {

@@ -42,7 +42,7 @@ import com.example.tanialtech.R;
 import com.example.tanialtech.activity.ActivityFragment;
 import com.example.tanialtech.article.ArticleFragment;
 import com.example.tanialtech.field.FieldFragment;
-import com.example.tanialtech.profile.ProfileFragment;
+import com.example.tanialtech.profile.ProfileFragmentDashboard;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -612,19 +612,11 @@ public class DashboardFragment extends Fragment {
 
         private void displayProfileFragment(){
             ConstraintLayout constraintLayout = requireView().findViewById(R.id.fragment_container);
-
-            // Hapus semua tampilan dari ConstraintLayout
             constraintLayout.removeAllViews();
-
-            // Buat instance dari FieldFragment
-            ProfileFragment profileFragment = new ProfileFragment();
-
-            // Dapatkan FragmentManager
-            FragmentManager fragmentManager = getChildFragmentManager();
-
-            // Lakukan transaksi fragment
+            ProfileFragmentDashboard profileFragmentDashboard = new ProfileFragmentDashboard();
+            FragmentManager fragmentManager = getParentFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(constraintLayout.getId(), profileFragment)
+                    .replace(constraintLayout.getId(), profileFragmentDashboard)
                     .addToBackStack(null) // Ini untuk menambahkan ke back stack
                     .commit();
 

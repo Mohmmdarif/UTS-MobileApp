@@ -27,8 +27,8 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.example.tanialtech.Dashboard.DashboardFragment;
 import com.example.tanialtech.R;
+import com.example.tanialtech.article.ArticleFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,29 +37,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragmentArticle extends Fragment {
+
     TextView edit, username, emailField, password, email, name;
 
     ImageView back, imageProfile;
     RequestQueue requestQueue;
     SharedPreferences sharedPreferences;
 
-    public ProfileFragment() {
+    public ProfileFragmentArticle() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(requireContext());
         sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_article, container, false);
 
         back = view.findViewById(R.id.back);
         edit = view.findViewById(R.id.edit);
@@ -84,7 +87,7 @@ public class ProfileFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
+                displayArticleFragment();
             }
         });
 
@@ -153,13 +156,13 @@ public class ProfileFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void displayDashboardFragment() {
+    private void displayArticleFragment() {
         FragmentManager fragmentManager = getParentFragmentManager();
 
-        DashboardFragment dashboardFragment = new DashboardFragment();
+        ArticleFragment articleFragment = new ArticleFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.fragment_container, dashboardFragment);
+        fragmentTransaction.replace(R.id.fragment_container, articleFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -175,5 +178,4 @@ public class ProfileFragment extends Fragment {
 
 
     }
-
 }

@@ -37,29 +37,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragmentDashboard extends Fragment {
     TextView edit, username, emailField, password, email, name;
 
     ImageView back, imageProfile;
     RequestQueue requestQueue;
     SharedPreferences sharedPreferences;
 
-    public ProfileFragment() {
+
+    public ProfileFragmentDashboard() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(requireContext());
         sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view =  inflater.inflate(R.layout.fragment_profile_dashboard, container, false);
 
         back = view.findViewById(R.id.back);
         edit = view.findViewById(R.id.edit);
@@ -84,7 +87,7 @@ public class ProfileFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
+                displayDashboardFragment();
             }
         });
 
@@ -175,5 +178,4 @@ public class ProfileFragment extends Fragment {
 
 
     }
-
 }

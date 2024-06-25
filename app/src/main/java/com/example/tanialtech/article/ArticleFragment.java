@@ -33,7 +33,7 @@ import com.example.tanialtech.article.adapter.ArticleAdapter;
 import com.example.tanialtech.article.adapter.MoreArticleAdapter;
 import com.example.tanialtech.article.data.ArticleItem;
 import com.example.tanialtech.article.data.MoreArticle;
-import com.example.tanialtech.profile.ProfileFragment;
+import com.example.tanialtech.profile.ProfileFragmentArticle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -113,11 +113,11 @@ public class ArticleFragment extends Fragment {
         profile.setOnClickListener(v -> {
             ConstraintLayout constraintLayout = requireView().findViewById(R.id.article_page);
             constraintLayout.removeAllViews();
-            ProfileFragment profileFragment = new ProfileFragment();
+            ProfileFragmentArticle profileFragmentArticle = new ProfileFragmentArticle();
 
             FragmentManager fragmentManager = getChildFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(constraintLayout.getId(), profileFragment)
+                    .replace(constraintLayout.getId(), profileFragmentArticle)
                     .addToBackStack(null) // Ini untuk menambahkan ke back stack
                     .commit();
 
