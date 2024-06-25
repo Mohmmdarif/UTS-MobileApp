@@ -1,11 +1,12 @@
 package com.example.tanialtech;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.os.Bundle;
-
 import com.example.tanialtech.Dashboard.DashboardFragment;
+import com.example.tanialtech.activity.ActivityFragment;
 import com.example.tanialtech.article.ArticleFragment;
 import com.example.tanialtech.field.FieldFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

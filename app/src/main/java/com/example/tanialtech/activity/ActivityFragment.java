@@ -1,6 +1,11 @@
 package com.example.tanialtech.activity;
 
+import static com.example.tanialtech.activity.CalendarUtils.daysInWeekArray;
+import static com.example.tanialtech.activity.CalendarUtils.monthYearFromDate;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +20,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.example.tanialtech.R;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import static com.example.tanialtech.activity.CalendarUtils.daysInMonthArray;
-import static com.example.tanialtech.activity.CalendarUtils.monthYearFromDate;
-import static com.example.tanialtech.activity.CalendarUtils.daysInWeekArray;
-
-import com.example.tanialtech.R;
 
 public class ActivityFragment extends Fragment implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
@@ -31,17 +34,28 @@ public class ActivityFragment extends Fragment implements CalendarAdapter.OnItem
     private Button previousWeekButton;
     private Button nextWeekButton;
     private Button newEventButton;
+    RequestQueue requestQueue;
+    SharedPreferences sharedPreferences;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestQueue = Volley.newRequestQueue(requireContext());
+        sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_activity, container, false);
+//        getProfileData();
         initWidgets(view);
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
         setEventAdapter();
         return view;
     }
+
+
 
     private void initWidgets(View view) {
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
@@ -50,6 +64,7 @@ public class ActivityFragment extends Fragment implements CalendarAdapter.OnItem
         previousWeekButton = view.findViewById(R.id.previousWeekButton);
         nextWeekButton = view.findViewById(R.id.nextWeekButton);
         newEventButton = view.findViewById(R.id.newEventButton);
+
 
         previousWeekButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,4 +134,7 @@ public class ActivityFragment extends Fragment implements CalendarAdapter.OnItem
     public void newEventAction() {
         startActivity(new Intent(getActivity(), EventEditActivity.class));
     }
+
+
+
 }

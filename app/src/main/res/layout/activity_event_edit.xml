@@ -5,68 +5,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activity.EventEditActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Name:"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
+    <LinearLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/eventNameET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:ems="10"
-        android:inputType="text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Name:"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
 
-    <TextView
-        android:id="@+id/eventDateTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Date"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/eventNameET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:ems="10"
+            android:inputType="text"
+            android:gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Time:"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/eventDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Date"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/eventTimeET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:ems="10"
-        android:inputType="text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Time:"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/green"
-        android:background="@null"
-        android:textStyle="bold"
-        android:onClick="saveEventAction"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/eventTimeET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:ems="10"
+            android:inputType="text"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/green"
+            android:background="@null"
+            android:textStyle="bold"
+            android:onClick="saveEventAction"
+            android:layout_gravity="center"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

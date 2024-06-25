@@ -39,6 +39,7 @@ import com.example.tanialtech.Dashboard.adapter.ArticleDashboard;
 import com.example.tanialtech.Dashboard.adapter.FieldDashboard;
 import com.example.tanialtech.Dashboard.adapter.TodoDashboard;
 import com.example.tanialtech.R;
+import com.example.tanialtech.activity.ActivityFragment;
 import com.example.tanialtech.article.ArticleFragment;
 import com.example.tanialtech.field.FieldFragment;
 import com.example.tanialtech.profile.ProfileFragment;

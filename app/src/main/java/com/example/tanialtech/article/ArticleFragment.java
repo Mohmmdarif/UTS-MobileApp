@@ -1,18 +1,8 @@
 package com.example.tanialtech.article;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -22,6 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,7 +41,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ArticleFragment extends Fragment {
@@ -113,10 +111,16 @@ public class ArticleFragment extends Fragment {
 
         ImageView profile = view.findViewById(R.id.profile_icon);
         profile.setOnClickListener(v -> {
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.article_page, new ProfileFragment());
-            transaction.addToBackStack(null);
-            transaction.commit();
+            ConstraintLayout constraintLayout = requireView().findViewById(R.id.article_page);
+            constraintLayout.removeAllViews();
+            ProfileFragment profileFragment = new ProfileFragment();
+
+            FragmentManager fragmentManager = getChildFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(constraintLayout.getId(), profileFragment)
+                    .addToBackStack(null) // Ini untuk menambahkan ke back stack
+                    .commit();
+
         });
 
         return view;
